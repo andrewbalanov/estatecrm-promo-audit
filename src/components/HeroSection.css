@@ -35,6 +35,35 @@
   object-fit: cover;
 }
 
+.hero__navbar-btn {
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 38px;
+  padding: 0 20px;
+  background: transparent;
+  border: 1.5px solid #ffffff;
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+  z-index: 3;
+}
+
+.hero__navbar-btn:hover {
+  background: #ffffff;
+  color: #202358;
+}
+
+.hero__button {
+  border: none;
+}
+
 .hero__content {
   position: relative;
   z-index: 2;
@@ -109,6 +138,12 @@
 
 /* Tablet */
 @media (max-width: 1024px) {
+  .hero__navbar-btn {
+    right: 40px;
+    font-size: 13px;
+    height: 34px;
+    padding: 0 16px;
+  }
   .hero {
     height: 620px;
   }
@@ -140,6 +175,12 @@
 
 /* Mobile */
 @media (max-width: 768px) {
+  .hero__navbar-btn {
+    right: 16px;
+    font-size: 12px;
+    height: 30px;
+    padding: 0 12px;
+  }
   .hero {
     height: 520px;
   }

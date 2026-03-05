@@ -226,10 +226,12 @@
   width: 1280px;
   height: 96px;
   background: #f6f8ff;
+  border: none;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Ubuntu', sans-serif;
   font-weight: 700;
   font-size: 35px;
   line-height: 56px;

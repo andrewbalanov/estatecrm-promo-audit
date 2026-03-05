@@ -1,7 +1,7 @@
 import React from 'react'
 import './MeetingSection.css'
 
-function MeetingSection() {
+function MeetingSection({ onOpenForm }) {
   return (
     <section className="meeting">
       {/* Glow effect */}
@@ -11,9 +11,9 @@ function MeetingSection() {
         Что вы получите<br />за одну встречу
       </h2>
 
-      <a href="#book" className="meeting__button">
+      <button className="meeting__button" onClick={onOpenForm} type="button">
         Забронировать слот для встречи
-      </a>
+      </button>
 
       <div className="meeting__cards">
         <img src={`${import.meta.env.BASE_URL}images/card1-leads.png`} alt="Узнаете, на каких этапах теряются лиды и деньги" className="meeting__card-render" />

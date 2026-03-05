@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './HeroSection.css'
 
-function HeroSection() {
+function HeroSection({ onOpenForm }) {
   const [time, setTime] = useState({ hours: 1, minutes: 45, seconds: 55 })
 
   useEffect(() => {
@@ -37,15 +37,18 @@ function HeroSection() {
       </div>
       <div className="hero__navbar">
         <img src={`${import.meta.env.BASE_URL}images/navbar.png`} alt="EstateCRM" className="hero__navbar-img" />
+        <button className="hero__navbar-btn" onClick={onOpenForm} type="button">
+          Записаться на аудит
+        </button>
       </div>
       <div className="hero__content">
         <div className="hero__shadow" />
         <h1 className="hero__title">
           Построим эталонную систему для управления продажами девелопера
         </h1>
-        <a href="#book" className="hero__button">
+        <button className="hero__button" onClick={onOpenForm} type="button">
           Записаться на аудит
-        </a>
+        </button>
         <p className="hero__timer">
           Бесплатно ещё 3 дня {pad(time.hours)}:{pad(time.minutes)}:{pad(time.seconds)}
         </p>

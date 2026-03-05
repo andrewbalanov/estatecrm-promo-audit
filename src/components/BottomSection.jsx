@@ -1,7 +1,7 @@
 import React from 'react'
 import './BottomSection.css'
 
-function BottomSection() {
+function BottomSection({ onOpenForm }) {
   return (
     <section className="bottom" id="book">
       {/* Background glows */}
@@ -67,9 +67,9 @@ function BottomSection() {
       </div>
 
       {/* CTA Button */}
-      <a href="#" className="bottom__cta">
-        Выбрать лот для встречи
-      </a>
+      <button className="bottom__cta" onClick={onOpenForm} type="button">
+        Выбрать слот для встречи
+      </button>
     </section>
   )
 }

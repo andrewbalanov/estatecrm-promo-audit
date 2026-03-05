@@ -38,6 +38,7 @@
   width: 396px;
   height: 114px;
   background: #f6f8ff;
+  border: none;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -47,6 +48,7 @@
   letter-spacing: -0.69px;
   line-height: 36.8px;
   color: #202358;
+  font-family: 'Ubuntu', sans-serif;
   text-align: center;
   cursor: pointer;
   transition: opacity 0.2s;
