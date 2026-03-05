@@ -1,0 +1,223 @@
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 65px;
+  z-index: 10;
+  background: rgba(32, 35, 88, 0.85);
+  backdrop-filter: blur(12px);
+}
+
+.navbar__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 80px;
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+  pointer-events: auto;
+}
+
+.navbar__logo-icon {
+  width: 24px;
+  height: 28px;
+}
+
+.navbar__logo-text {
+  font-weight: 700;
+  font-size: 18px;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin-left: 40px;
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__link {
+  font-weight: 400;
+  font-size: 15px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+  pointer-events: auto;
+}
+
+.navbar__link:hover {
+  opacity: 0.7;
+}
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: auto;
+}
+
+.navbar__phone {
+  font-weight: 500;
+  font-size: 15px;
+  color: #ffffff;
+  text-decoration: none;
+  white-space: nowrap;
+  pointer-events: auto;
+  transition: opacity 0.2s;
+}
+
+.navbar__phone:hover {
+  opacity: 0.7;
+}
+
+.navbar__cta {
+  height: 40px;
+  padding: 0 22px;
+  background: #3e57da;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.navbar__cta:hover {
+  opacity: 0.9;
+}
+
+/* Burger - hidden on desktop */
+.navbar__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: auto;
+  z-index: 11;
+}
+
+.navbar__burger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.navbar__burger--open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__burger--open span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar__burger--open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .navbar__inner {
+    padding: 0 40px;
+  }
+  .navbar__links {
+    gap: 24px;
+  }
+  .navbar__link {
+    font-size: 14px;
+  }
+  .navbar__phone {
+    font-size: 14px;
+  }
+  .navbar__menu {
+    margin-left: 30px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .navbar {
+    height: 56px;
+  }
+  .navbar__inner {
+    padding: 0 20px;
+  }
+  .navbar__burger {
+    display: flex;
+  }
+  .navbar__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(32, 35, 88, 0.97);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 10;
+  }
+  .navbar__menu--open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .navbar__links {
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+  .navbar__link {
+    font-size: 20px;
+  }
+  .navbar__right {
+    flex-direction: column;
+    margin-left: 0;
+    margin-top: 32px;
+    gap: 16px;
+    align-items: center;
+  }
+  .navbar__phone {
+    font-size: 18px;
+  }
+  .navbar__cta {
+    height: 48px;
+    padding: 0 32px;
+    font-size: 16px;
+  }
+}

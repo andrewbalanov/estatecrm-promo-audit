@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Navbar from './Navbar'
 import './HeroSection.css'
 
 function HeroSection({ onOpenForm }) {
@@ -35,12 +36,7 @@ function HeroSection({ onOpenForm }) {
       <div className="hero__bg">
         <img src={`${import.meta.env.BASE_URL}images/macbook-bg.png`} alt="" className="hero__bg-img" />
       </div>
-      <div className="hero__navbar">
-        <img src={`${import.meta.env.BASE_URL}images/navbar.png`} alt="EstateCRM" className="hero__navbar-img" />
-        <button className="hero__navbar-btn" onClick={onOpenForm} type="button">
-          Записаться на аудит
-        </button>
-      </div>
+      <Navbar onOpenForm={onOpenForm} />
       <div className="hero__content">
         <div className="hero__shadow" />
         <h1 className="hero__title">

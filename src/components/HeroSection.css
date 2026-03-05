@@ -20,49 +20,6 @@
   object-fit: cover;
 }
 
-.hero__navbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 65px;
-  z-index: 2;
-}
-
-.hero__navbar-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero__navbar-btn {
-  position: absolute;
-  right: 72px;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 40px;
-  padding: 0 22px;
-  background: #3e57da;
-  border: none;
-  border-radius: 8px;
-  color: #ffffff;
-  font-family: 'Ubuntu', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  cursor: pointer;
-  transition: opacity 0.2s;
-  white-space: nowrap;
-  z-index: 3;
-}
-
-.hero__navbar-btn:hover {
-  opacity: 0.9;
-}
-
-.hero__button {
-  border: none;
-}
-
 .hero__content {
   position: relative;
   z-index: 2;
@@ -103,10 +60,12 @@
   width: 276px;
   height: 70px;
   background: #3e57da;
+  border: none;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Ubuntu', sans-serif;
   font-weight: 700;
   font-size: 20px;
   letter-spacing: -0.4px;
@@ -137,9 +96,6 @@
 
 /* Tablet */
 @media (max-width: 1024px) {
-  .hero__navbar-btn {
-    right: 30px;
-  }
   .hero {
     height: 620px;
   }
@@ -171,21 +127,12 @@
 
 /* Mobile */
 @media (max-width: 768px) {
-  .hero__navbar-btn {
-    right: 12px;
-    font-size: 11px;
-    height: 32px;
-    padding: 0 12px;
-  }
   .hero {
     height: 520px;
   }
   .hero__bg {
     top: -30px;
     height: 580px;
-  }
-  .hero__navbar {
-    height: 50px;
   }
   .hero__shadow {
     top: 130px;
