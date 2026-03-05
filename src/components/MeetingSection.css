@@ -71,3 +71,66 @@
   object-fit: contain;
   border-radius: 12px;
 }
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .meeting {
+    height: auto;
+    padding: 60px 40px 80px;
+    --offset: 0px;
+  }
+  .meeting__glow {
+    left: 30%;
+    top: 0;
+  }
+  .meeting__title {
+    position: static;
+    width: 100%;
+    font-size: 50px;
+    line-height: 50px;
+  }
+  .meeting__button {
+    position: static;
+    width: 100%;
+    max-width: 396px;
+    height: 90px;
+    margin-top: 30px;
+  }
+  .meeting__cards {
+    position: static;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  .meeting__card-render {
+    width: calc(50% - 15px);
+    height: auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .meeting {
+    padding: 40px 24px 60px;
+  }
+  .meeting__title {
+    font-size: 36px;
+    line-height: 38px;
+  }
+  .meeting__button {
+    width: 100%;
+    max-width: none;
+    height: 80px;
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .meeting__cards {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .meeting__card-render {
+    width: 100%;
+    height: auto;
+  }
+}

@@ -17,3 +17,28 @@
   color: #202358;
   text-align: center;
 }
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .quote {
+    height: auto;
+    padding: 60px 40px;
+  }
+  .quote__text {
+    width: 100%;
+    font-size: 36px;
+    line-height: 40px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .quote {
+    padding: 40px 24px;
+  }
+  .quote__text {
+    font-size: 26px;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+  }
+}
