@@ -10,7 +10,7 @@ function BottomSection() {
       <div className="bottom__glow bottom__glow--3" />
 
       {/* Resource bg image */}
-      <img src="/images/resource-bg.png" alt="" className="bottom__resource-bg" />
+      <img src={`${import.meta.env.BASE_URL}images/resource-bg.png`} alt="" className="bottom__resource-bg" />
 
       {/* Expert section */}
       <p className="bottom__expert-label">С кем и когда пройдет встреча</p>
@@ -27,7 +27,7 @@ function BottomSection() {
 
       <div className="bottom__expert-photo-bg" />
       <div className="bottom__expert-photo-wrapper">
-        <img src="/images/gleb-photo.png" alt="Глеб Цыганков" className="bottom__expert-photo" />
+        <img src={`${import.meta.env.BASE_URL}images/gleb-photo.png`} alt="Глеб Цыганков" className="bottom__expert-photo" />
       </div>
 
       {/* Time box */}
@@ -56,7 +56,7 @@ function BottomSection() {
         </div>
 
         <div className="bottom__bonus-card">
-          <img src="/images/icon-star.png" alt="" className="bottom__bonus-icon" />
+          <img src={`${import.meta.env.BASE_URL}images/icon-star.png`} alt="" className="bottom__bonus-icon" />
           <h4 className="bottom__bonus-card-title">
             Специальные условия на внедрение EstateCRM
           </h4>

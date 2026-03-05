@@ -16,9 +16,9 @@ function MeetingSection() {
       </a>
 
       <div className="meeting__cards">
-        <img src="/images/card1-leads.png" alt="Узнаете, на каких этапах теряются лиды и деньги" className="meeting__card-render" />
-        <img src="/images/card2-cycle.png" alt="Поймёте, как сократить цикл сделки" className="meeting__card-render" />
-        <img src="/images/card3-tools.png" alt="Получите набор инструментов" className="meeting__card-render" />
+        <img src={`${import.meta.env.BASE_URL}images/card1-leads.png`} alt="Узнаете, на каких этапах теряются лиды и деньги" className="meeting__card-render" />
+        <img src={`${import.meta.env.BASE_URL}images/card2-cycle.png`} alt="Поймёте, как сократить цикл сделки" className="meeting__card-render" />
+        <img src={`${import.meta.env.BASE_URL}images/card3-tools.png`} alt="Получите набор инструментов" className="meeting__card-render" />
       </div>
     </section>
   )

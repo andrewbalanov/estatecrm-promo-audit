@@ -33,10 +33,10 @@ function HeroSection() {
   return (
     <section className="hero">
       <div className="hero__bg">
-        <img src="/images/macbook-bg.png" alt="" className="hero__bg-img" />
+        <img src={`${import.meta.env.BASE_URL}images/macbook-bg.png`} alt="" className="hero__bg-img" />
       </div>
       <div className="hero__navbar">
-        <img src="/images/navbar.png" alt="EstateCRM" className="hero__navbar-img" />
+        <img src={`${import.meta.env.BASE_URL}images/navbar.png`} alt="EstateCRM" className="hero__navbar-img" />
       </div>
       <div className="hero__content">
         <div className="hero__shadow" />
