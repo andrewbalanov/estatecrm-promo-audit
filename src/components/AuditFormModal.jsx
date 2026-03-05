@@ -13,6 +13,7 @@ function AuditFormModal({ isOpen, onClose }) {
     marketing: true,
   })
   const [status, setStatus] = useState('idle') // idle | loading | success | error
+  const [errorMsg, setErrorMsg] = useState('')
 
   if (!isOpen) return null
 
@@ -48,16 +49,23 @@ function AuditFormModal({ isOpen, onClose }) {
         setStatus('success')
       } else {
         console.error('Bitrix24 error:', data)
+        setErrorMsg(
+          data.error === 'insufficient_scope'
+            ? 'Ошибка настройки CRM. Свяжитесь с нами по телефону.'
+            : 'Не удалось отправить заявку. Попробуйте ещё раз.'
+        )
         setStatus('error')
       }
     } catch (err) {
       console.error('Network error:', err)
+      setErrorMsg('Ошибка сети. Проверьте подключение и попробуйте ещё раз.')
       setStatus('error')
     }
   }
 
   const handleClose = () => {
     setStatus('idle')
+    setErrorMsg('')
     setForm({ name: '', company: '', email: '', phone: '', consent: true, marketing: true })
     onClose()
   }
@@ -156,7 +164,7 @@ function AuditFormModal({ isOpen, onClose }) {
               <span>Хочу получать email с новыми кейсами, рекламой и <a href="#">быть в курсе важных событий</a></span>
             </label>
             {status === 'error' && (
-              <p className="modal__error">Произошла ошибка. Попробуйте ещё раз.</p>
+              <p className="modal__error">{errorMsg}</p>
             )}
             <button className="modal__submit" type="submit" disabled={status === 'loading'}>
               {status === 'loading' ? 'Отправка...' : 'Записаться на аудит'}
