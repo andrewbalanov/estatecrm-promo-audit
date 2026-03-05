@@ -1,0 +1,72 @@
+.meeting {
+  width: 1440px;
+  height: 900px;
+  position: relative;
+  background: #202358;
+  overflow: hidden;
+}
+
+.meeting__glow {
+  position: absolute;
+  left: 630px;
+  top: 174px;
+  width: 1411px;
+  height: 1411px;
+  border-radius: 50%;
+  background: rgba(67, 86, 210, 0.3);
+  filter: blur(400px);
+  pointer-events: none;
+}
+
+.meeting__title {
+  position: absolute;
+  left: 80px;
+  top: 160px;
+  width: 648px;
+  font-weight: 700;
+  font-size: 70px;
+  line-height: 70px;
+  letter-spacing: -1.4px;
+  color: #f6f8ff;
+}
+
+.meeting__button {
+  position: absolute;
+  left: 964px;
+  top: 173px;
+  width: 396px;
+  height: 114px;
+  background: #f6f8ff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 23px;
+  letter-spacing: -0.69px;
+  line-height: 36.8px;
+  color: #202358;
+  text-align: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  z-index: 1;
+}
+
+.meeting__button:hover {
+  opacity: 0.9;
+}
+
+.meeting__cards {
+  position: absolute;
+  left: 80px;
+  top: 380px;
+  display: flex;
+  gap: 55px;
+}
+
+.meeting__card-render {
+  width: 390px;
+  height: 315px;
+  object-fit: contain;
+  border-radius: 12px;
+}

@@ -1,0 +1,19 @@
+.quote {
+  width: 1440px;
+  height: 444px;
+  position: relative;
+  background: #c6d7fe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote__text {
+  width: 948px;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 50px;
+  letter-spacing: -1px;
+  color: #202358;
+  text-align: center;
+}
