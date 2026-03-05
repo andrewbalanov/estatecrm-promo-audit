@@ -6,8 +6,6 @@ function Navbar({ onOpenForm }) {
 
   const links = [
     { text: 'Функционал', href: 'https://estatecrm.io/developers/' },
-    { text: 'Продукты', href: 'https://estatecrm.io/developers/' },
-    { text: 'Компания', href: 'https://estatecrm.io/company/' },
     { text: 'Кейсы', href: 'https://estatecrm.io/cases/' },
     { text: 'Интеграции', href: 'https://estatecrm.io/integrations/' },
     { text: 'Новости', href: 'https://estatecrm.io/blog/' },
