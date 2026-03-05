@@ -1,5 +1,5 @@
 .hero {
-  width: 1440px;
+  width: 100%;
   height: 850px;
   position: relative;
   background: #f5f8ff;
@@ -10,7 +10,7 @@
   position: absolute;
   top: -106px;
   left: 0;
-  width: 1440px;
+  width: 100%;
   height: 960px;
 }
 
@@ -24,7 +24,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 1440px;
+  width: 100%;
   height: 65px;
   z-index: 2;
 }
@@ -42,7 +42,8 @@
 
 .hero__shadow {
   position: absolute;
-  left: 248px;
+  left: 50%;
+  transform: translateX(-50%);
   top: 246px;
   width: 704px;
   height: 249px;
@@ -53,7 +54,8 @@
 
 .hero__title {
   position: absolute;
-  left: 248px;
+  left: 50%;
+  transform: translateX(-50%);
   top: 253px;
   width: 943px;
   height: 189px;
@@ -67,7 +69,8 @@
 
 .hero__button {
   position: absolute;
-  left: 582px;
+  left: 50%;
+  transform: translateX(-50%);
   top: 512px;
   width: 276px;
   height: 70px;
@@ -91,7 +94,8 @@
 
 .hero__timer {
   position: absolute;
-  left: 584px;
+  left: 50%;
+  transform: translateX(-50%);
   top: 599px;
   width: 273px;
   height: 64px;

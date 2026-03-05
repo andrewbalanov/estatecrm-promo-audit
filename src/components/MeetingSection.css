@@ -1,14 +1,15 @@
 .meeting {
-  width: 1440px;
+  width: 100%;
   height: 900px;
   position: relative;
   background: #202358;
   overflow: hidden;
+  --offset: max(0px, calc((100vw - 1440px) / 2));
 }
 
 .meeting__glow {
   position: absolute;
-  left: 630px;
+  left: calc(var(--offset) + 630px);
   top: 174px;
   width: 1411px;
   height: 1411px;
@@ -20,7 +21,7 @@
 
 .meeting__title {
   position: absolute;
-  left: 80px;
+  left: calc(var(--offset) + 80px);
   top: 160px;
   width: 648px;
   font-weight: 700;
@@ -32,7 +33,7 @@
 
 .meeting__button {
   position: absolute;
-  left: 964px;
+  left: calc(var(--offset) + 964px);
   top: 173px;
   width: 396px;
   height: 114px;
@@ -58,7 +59,7 @@
 
 .meeting__cards {
   position: absolute;
-  left: 80px;
+  left: calc(var(--offset) + 80px);
   top: 380px;
   display: flex;
   gap: 55px;

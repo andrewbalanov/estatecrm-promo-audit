@@ -1,14 +1,15 @@
 .whynow {
-  width: 1440px;
+  width: 100%;
   height: 782px;
   position: relative;
   background: #202358;
   overflow: hidden;
+  --offset: max(0px, calc((100vw - 1440px) / 2));
 }
 
 .whynow__glow {
   position: absolute;
-  left: 630px;
+  left: calc(var(--offset) + 630px);
   top: -800px;
   width: 1411px;
   height: 1411px;
@@ -20,7 +21,7 @@
 
 .whynow__title {
   position: absolute;
-  left: 80px;
+  left: calc(var(--offset) + 80px);
   top: 71px;
   width: 660px;
   font-weight: 700;
@@ -32,7 +33,7 @@
 
 .whynow__subtitle {
   position: absolute;
-  left: 80px;
+  left: calc(var(--offset) + 80px);
   top: 291px;
   width: 649px;
   font-weight: 500;
@@ -43,7 +44,7 @@
 
 .whynow__stats {
   position: absolute;
-  left: 0;
+  left: var(--offset);
   top: 379px;
   width: 1440px;
 }

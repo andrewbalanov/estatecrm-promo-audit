@@ -1,14 +1,15 @@
 .steps {
-  width: 1440px;
+  width: 100%;
   height: 770px;
   position: relative;
   background: linear-gradient(180deg, #161f4e 0%, #202358 100%);
   overflow: hidden;
+  --offset: max(0px, calc((100vw - 1440px) / 2));
 }
 
 .steps__title {
   position: absolute;
-  left: 522px;
+  left: calc(var(--offset) + 522px);
   top: 82px;
   width: 396px;
   height: 70px;
@@ -32,23 +33,23 @@
 }
 
 .steps__bignumber--1 {
-  left: 50px;
+  left: calc(var(--offset) + 50px);
   top: -32px;
 }
 
 .steps__bignumber--2 {
-  left: 577px;
+  left: calc(var(--offset) + 577px);
   top: 303px;
 }
 
 .steps__bignumber--3 {
-  left: 1130px;
+  left: calc(var(--offset) + 1130px);
   top: -32px;
 }
 
 .steps__line {
   position: absolute;
-  left: 290px;
+  left: calc(var(--offset) + 290px);
   top: 362px;
   width: 859px;
   height: 3px;
@@ -71,17 +72,17 @@
 }
 
 .steps__item--1 {
-  left: 226px;
+  left: calc(var(--offset) + 226px);
   top: 285px;
 }
 
 .steps__item--2 {
-  left: 642px;
+  left: calc(var(--offset) + 642px);
   top: 285px;
 }
 
 .steps__item--3 {
-  left: 1059px;
+  left: calc(var(--offset) + 1059px);
   top: 285px;
 }
 

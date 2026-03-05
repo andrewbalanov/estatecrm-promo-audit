@@ -1,9 +1,10 @@
 .bottom {
-  width: 1440px;
+  width: 100%;
   height: 1224px;
   position: relative;
   background: #202358;
   overflow: hidden;
+  --offset: max(0px, calc((100vw - 1440px) / 2));
 }
 
 /* Background glows */
@@ -16,21 +17,21 @@
 }
 
 .bottom__glow--1 {
-  left: 92px;
+  left: calc(var(--offset) + 92px);
   top: 467px;
   width: 862px;
   height: 862px;
 }
 
 .bottom__glow--2 {
-  left: 778px;
+  left: calc(var(--offset) + 778px);
   top: -360px;
   width: 862px;
   height: 862px;
 }
 
 .bottom__glow--3 {
-  left: 740px;
+  left: calc(var(--offset) + 740px);
   top: 644px;
   width: 862px;
   height: 862px;
@@ -38,7 +39,7 @@
 
 .bottom__resource-bg {
   position: absolute;
-  left: 621px;
+  left: calc(var(--offset) + 621px);
   top: 516px;
   width: 1000px;
   height: 851px;
@@ -51,7 +52,7 @@
 /* Expert label */
 .bottom__expert-label {
   position: absolute;
-  left: 80px;
+  left: calc(var(--offset) + 80px);
   top: 91px;
   font-weight: 500;
   font-size: 23px;
@@ -62,7 +63,7 @@
 /* Expert info */
 .bottom__expert-info {
   position: absolute;
-  left: 150px;
+  left: calc(var(--offset) + 150px);
   top: 213px;
 }
 
@@ -94,7 +95,7 @@
 /* Expert photo */
 .bottom__expert-photo-wrapper {
   position: absolute;
-  left: 637px;
+  left: calc(var(--offset) + 637px);
   top: 185px;
   width: 307px;
   height: 341px;
@@ -104,7 +105,7 @@
 
 .bottom__expert-photo-bg {
   position: absolute;
-  left: 644px;
+  left: calc(var(--offset) + 644px);
   top: 239px;
   width: 292px;
   height: 284px;
@@ -125,7 +126,7 @@
 /* Time box */
 .bottom__time-box {
   position: absolute;
-  left: 983px;
+  left: calc(var(--offset) + 983px);
   top: 149px;
   width: 306px;
   height: 164px;
@@ -161,7 +162,7 @@
 /* Bonuses */
 .bottom__bonuses-title {
   position: absolute;
-  left: 80px;
+  left: calc(var(--offset) + 80px);
   top: 619px;
   font-weight: 500;
   font-size: 50px;
@@ -172,7 +173,7 @@
 
 .bottom__bonuses {
   position: absolute;
-  left: 80px;
+  left: calc(var(--offset) + 80px);
   top: 704px;
   display: flex;
   gap: 22px;
@@ -220,7 +221,7 @@
 /* CTA */
 .bottom__cta {
   position: absolute;
-  left: 80px;
+  left: calc(var(--offset) + 80px);
   top: 1001px;
   width: 1280px;
   height: 96px;
