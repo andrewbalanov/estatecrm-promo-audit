@@ -21,9 +21,9 @@
 .navbar__logo {
   display: flex;
   align-items: center;
-  text-decoration: none;
   flex-shrink: 0;
-  pointer-events: auto;
+  position: relative;
+  top: -8px;
 }
 
 .navbar__logo-img {

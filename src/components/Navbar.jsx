@@ -14,9 +14,9 @@ function Navbar({ onOpenForm }) {
   return (
     <nav className="navbar">
       <div className="navbar__inner">
-        <a href="https://estatecrm.io" target="_blank" rel="noopener noreferrer" className="navbar__logo">
+        <div className="navbar__logo">
           <img src={`${import.meta.env.BASE_URL}images/logo.png`} alt="EstateCRM" className="navbar__logo-img" />
-        </a>
+        </div>
 
         <button
           className="navbar__burger"
@@ -31,9 +31,9 @@ function Navbar({ onOpenForm }) {
 
         <div className={`navbar__menu ${menuOpen ? 'navbar__menu--open' : ''}`}>
           <div className="navbar__mobile-header">
-            <a href="https://estatecrm.io" target="_blank" rel="noopener noreferrer" className="navbar__logo">
+            <div className="navbar__logo">
               <img src={`${import.meta.env.BASE_URL}images/logo.png`} alt="EstateCRM" className="navbar__logo-img" />
-            </a>
+            </div>
             <button
               className="navbar__close"
               onClick={() => setMenuOpen(false)}
