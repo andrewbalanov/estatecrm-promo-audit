@@ -43,11 +43,17 @@ function Navbar({ onOpenForm }) {
           </ul>
 
           <div className="navbar__right">
+            <svg className="navbar__globe" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="10" cy="10" r="9" stroke="#ffffff" strokeWidth="1.3" />
+              <ellipse cx="10" cy="10" rx="4.5" ry="9" stroke="#ffffff" strokeWidth="1.3" />
+              <line x1="1" y1="10" x2="19" y2="10" stroke="#ffffff" strokeWidth="1.3" />
+            </svg>
             <a href="tel:+74950193013" className="navbar__phone">
               +7 (495) 019-30-13
             </a>
             <button className="navbar__cta" onClick={onOpenForm} type="button">
               Записаться на аудит
+              <span className="navbar__cta-arrow">→</span>
             </button>
           </div>
         </div>
