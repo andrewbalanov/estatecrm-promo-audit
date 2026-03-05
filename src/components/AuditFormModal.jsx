@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './AuditFormModal.css'
 
-const BITRIX_WEBHOOK = 'https://tracebs.bitrix24.ru/rest/2/d2vo2nca7oib7dp5/'
+const BITRIX_WEBHOOK = 'https://tracebs.bitrix24.ru/rest/2/7det75s26t8s9sz6/'
 
 function AuditFormModal({ isOpen, onClose }) {
   const [form, setForm] = useState({
