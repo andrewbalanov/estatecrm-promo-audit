@@ -17,13 +17,7 @@ function Navbar({ onOpenForm }) {
     <nav className="navbar">
       <div className="navbar__inner">
         <a href="https://estatecrm.io" target="_blank" rel="noopener noreferrer" className="navbar__logo">
-          <svg className="navbar__logo-icon" width="24" height="28" viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0" y="0" width="4" height="28" rx="1" fill="#ffffff" />
-            <rect x="6.5" y="6" width="4" height="22" rx="1" fill="#ffffff" />
-            <rect x="13" y="3" width="4" height="25" rx="1" fill="#ffffff" />
-            <rect x="19.5" y="9" width="4" height="19" rx="1" fill="#ffffff" />
-          </svg>
-          <span className="navbar__logo-text">EstateCRM</span>
+          <img src={`${import.meta.env.BASE_URL}images/logo.png`} alt="EstateCRM" className="navbar__logo-img" />
         </a>
 
         <button

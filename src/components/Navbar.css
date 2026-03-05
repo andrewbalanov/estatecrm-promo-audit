@@ -21,22 +21,15 @@
 .navbar__logo {
   display: flex;
   align-items: center;
-  gap: 8px;
   text-decoration: none;
   flex-shrink: 0;
   pointer-events: auto;
 }
 
-.navbar__logo-icon {
-  width: 24px;
-  height: 28px;
-}
-
-.navbar__logo-text {
-  font-weight: 700;
-  font-size: 18px;
-  color: #ffffff;
-  letter-spacing: -0.3px;
+.navbar__logo-img {
+  height: 22px;
+  width: auto;
+  pointer-events: auto;
 }
 
 .navbar__menu {
@@ -172,6 +165,9 @@
   }
   .navbar__inner {
     padding: 0 20px;
+  }
+  .navbar__logo-img {
+    height: 18px;
   }
   .navbar__burger {
     display: flex;
