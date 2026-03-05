@@ -27,7 +27,7 @@
 }
 
 .navbar__logo-img {
-  height: 30px;
+  height: 28px;
   width: auto;
   pointer-events: auto;
 }
@@ -94,16 +94,16 @@
 .navbar__cta {
   height: 44px;
   padding: 0 24px;
-  background: transparent;
-  border: 1.5px solid #ffffff;
-  border-radius: 8px;
+  background: #3e57da;
+  border: none;
+  border-radius: 10px;
   color: #ffffff;
   font-family: 'Inter', system-ui, sans-serif;
   font-weight: 500;
   font-size: 15px;
   line-height: 24px;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.25s;
   white-space: nowrap;
   display: flex;
   align-items: center;
@@ -111,8 +111,7 @@
 }
 
 .navbar__cta:hover {
-  background: #ffffff;
-  color: #202358;
+  background: #1f235b;
 }
 
 .navbar__cta-arrow {
