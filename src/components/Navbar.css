@@ -27,7 +27,7 @@
 }
 
 .navbar__logo-img {
-  height: 30px;
+  height: 36px;
   width: auto;
   pointer-events: auto;
 }
@@ -196,7 +196,7 @@
     padding: 0 20px;
   }
   .navbar__logo-img {
-    height: 22px;
+    height: 26px;
   }
   .navbar__burger {
     display: flex;
