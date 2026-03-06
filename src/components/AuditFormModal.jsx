@@ -27,7 +27,7 @@ function AuditFormModal({ isOpen, onClose }) {
     setStatus('loading')
 
     try {
-      const response = await fetch(`${BITRIX_WEBHOOK}crm.lead.add.json`, {
+      const bitrixPromise = fetch(`${BITRIX_WEBHOOK}crm.lead.add.json`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -43,7 +43,21 @@ function AuditFormModal({ isOpen, onClose }) {
         }),
       })
 
-      const data = await response.json()
+      const emailPromise = fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          company: form.company,
+          email: form.email,
+          phone: form.phone,
+          consent: form.consent,
+          marketing: form.marketing,
+        }),
+      }).catch(err => console.error('Email notification error:', err))
+
+      const [bitrixResponse] = await Promise.all([bitrixPromise, emailPromise])
+      const data = await bitrixResponse.json()
 
       if (data.result) {
         setStatus('success')

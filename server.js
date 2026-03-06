@@ -1,0 +1,104 @@
+import 'dotenv/config'
+import express from 'express'
+import nodemailer from 'nodemailer'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+const app = express()
+const PORT = process.env.PORT || 3000
+
+app.use(express.json())
+
+// Serve static files from Vite build
+app.use('/audit', express.static(join(__dirname, 'dist')))
+
+// SMTP transporter for Office 365
+const transporter = nodemailer.createTransport({
+  host: 'smtp.mail.ru',
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.SMTP_USER || 'sales@estatecrm.io',
+    pass: process.env.SMTP_PASS,
+  },
+})
+
+function buildEmailHtml({ name, company, email, phone, consent, marketing, url }) {
+  const fields = [
+    { label: 'Имя', value: name },
+    { label: 'Название компании', value: company },
+    { label: 'Рабочая почта', value: `<a href="mailto:${email}" style="color: #d4762c; text-decoration: none;">${email}</a>` },
+    { label: 'Телефон', value: phone },
+    { label: 'Согласие', value: consent ? 'Согласие на обработку персональных данных' : 'Не дано' },
+    { label: 'Согласие (копия)', value: marketing ? 'Хочу получать email с новыми кейсами, рекламой и быть в курсе важных событий' : 'Отказ от рассылки' },
+    { label: 'URL', value: `<a href="${url}" style="color: #d4762c; text-decoration: none;">${url}</a>` },
+  ]
+
+  const rows = fields.map(({ label, value }) => `
+    <tr>
+      <td style="padding: 24px 40px 0;">
+        <p style="margin: 0 0 8px; font-weight: 700; font-size: 15px; color: #1a1a1a;">${label}</p>
+        <p style="margin: 0 0 24px; font-size: 15px; color: #333;">${value}</p>
+        <hr style="border: none; border-top: 1px solid #e5e5e5; margin: 0;" />
+      </td>
+    </tr>
+  `).join('')
+
+  return `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="margin: 0; padding: 0; background: #f0f0f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background: #f0f0f0; padding: 32px 0;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="background: #ffffff; border-radius: 4px;">
+          ${rows}
+          <tr>
+            <td style="padding: 32px 40px; text-align: center;">
+              <p style="margin: 0; font-size: 13px; color: #999;">
+                Отправлено с сайта <a href="https://estatecrm.io" style="color: #d4762c; text-decoration: none;">EstateCRM</a>
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`
+}
+
+app.post('/api/send-email', async (req, res) => {
+  const { name, company, email, phone, consent, marketing } = req.body
+
+  if (!name || !company || !email || !phone) {
+    return res.status(400).json({ error: 'Missing required fields' })
+  }
+
+  const pageUrl = req.headers.referer || 'https://estatecrm.io/audit/'
+
+  try {
+    await transporter.sendMail({
+      from: '"EstateCRM - Sales" <sales@estatecrm.io>',
+      to: 'sales@estatecrm.io',
+      subject: 'Новая заявка: Лендинг "Аудит" - Форма "Аудит CRM"',
+      html: buildEmailHtml({ name, company, email, phone, consent, marketing, url: pageUrl }),
+    })
+    res.json({ success: true })
+  } catch (err) {
+    console.error('Email send error:', err)
+    res.status(500).json({ error: 'Failed to send email' })
+  }
+})
+
+// SPA fallback
+app.get('/audit/*', (req, res) => {
+  res.sendFile(join(__dirname, 'dist', 'index.html'))
+})
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
+})
