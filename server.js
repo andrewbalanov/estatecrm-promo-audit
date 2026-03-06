@@ -98,8 +98,13 @@ const sendEmailHandler = async (req, res) => {
 app.post('/api/send-email', sendEmailHandler)
 app.post('/audit/api/send-email', sendEmailHandler)
 
-// Healthcheck — проверяет сервер + SMTP подключение
+// Healthcheck — проверяет сервер + SMTP подключение (защищён ключом)
+const HEALTH_KEY = process.env.HEALTH_KEY || 'estatecrm-mon-2026'
+
 const healthHandler = async (req, res) => {
+  if (req.query.key !== HEALTH_KEY) {
+    return res.status(401).json({ error: 'Unauthorized' })
+  }
   const status = { server: 'ok', smtp: 'ok', timestamp: new Date().toISOString() }
   try {
     await transporter.verify()
