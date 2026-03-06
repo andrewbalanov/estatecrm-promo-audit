@@ -98,6 +98,20 @@ const sendEmailHandler = async (req, res) => {
 app.post('/api/send-email', sendEmailHandler)
 app.post('/audit/api/send-email', sendEmailHandler)
 
+// Healthcheck — проверяет сервер + SMTP подключение
+const healthHandler = async (req, res) => {
+  const status = { server: 'ok', smtp: 'ok', timestamp: new Date().toISOString() }
+  try {
+    await transporter.verify()
+  } catch {
+    status.smtp = 'error'
+  }
+  const httpCode = status.smtp === 'ok' ? 200 : 503
+  res.status(httpCode).json(status)
+}
+app.get('/api/health', healthHandler)
+app.get('/audit/api/health', healthHandler)
+
 // SPA fallback
 app.get('/audit/*', (req, res) => {
   res.sendFile(join(__dirname, 'dist', 'index.html'))
