@@ -11,8 +11,9 @@ const PORT = process.env.PORT || 3000
 
 app.use(express.json())
 
-// Serve static files from Vite build
+// Serve static files from Vite build (both paths for Coolify compatibility)
 app.use('/audit', express.static(join(__dirname, 'dist')))
+app.use('/', express.static(join(__dirname, 'dist')))
 
 // SMTP transporter for Office 365
 const transporter = nodemailer.createTransport({
@@ -71,7 +72,7 @@ function buildEmailHtml({ name, company, email, phone, consent, marketing, url }
 </html>`
 }
 
-app.post('/api/send-email', async (req, res) => {
+const sendEmailHandler = async (req, res) => {
   const { name, company, email, phone, consent, marketing } = req.body
 
   if (!name || !company || !email || !phone) {
@@ -92,10 +93,16 @@ app.post('/api/send-email', async (req, res) => {
     console.error('Email send error:', err)
     res.status(500).json({ error: 'Failed to send email' })
   }
-})
+}
+
+app.post('/api/send-email', sendEmailHandler)
+app.post('/audit/api/send-email', sendEmailHandler)
 
 // SPA fallback
 app.get('/audit/*', (req, res) => {
+  res.sendFile(join(__dirname, 'dist', 'index.html'))
+})
+app.get('*', (req, res) => {
   res.sendFile(join(__dirname, 'dist', 'index.html'))
 })
 

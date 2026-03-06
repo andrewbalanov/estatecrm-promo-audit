@@ -43,7 +43,7 @@ function AuditFormModal({ isOpen, onClose }) {
         }),
       })
 
-      const emailPromise = fetch('/api/send-email', {
+      const emailPromise = fetch('/audit/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
