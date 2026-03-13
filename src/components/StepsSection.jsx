@@ -3,7 +3,7 @@ import './StepsSection.css'
 
 function StepsSection() {
   return (
-    <section className="steps">
+    <section className="steps" id="steps">
       {/* Background large numbers */}
       <span className="steps__bignumber steps__bignumber--1">1</span>
       <span className="steps__bignumber steps__bignumber--2">2</span>

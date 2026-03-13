@@ -5,10 +5,10 @@ function Navbar({ onOpenForm }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const links = [
-    { text: 'Функционал', href: 'https://estatecrm.io/developers/' },
-    { text: 'Кейсы', href: 'https://estatecrm.io/cases/' },
-    { text: 'Интеграции', href: 'https://estatecrm.io/integrations/' },
-    { text: 'Новости', href: 'https://estatecrm.io/blog/' },
+    { text: 'Как проходит', href: '#steps' },
+    { text: 'Что получите', href: '#meeting' },
+    { text: 'Почему сейчас', href: '#whynow' },
+    { text: 'Эксперт', href: '#book' },
   ]
 
   return (
@@ -47,7 +47,7 @@ function Navbar({ onOpenForm }) {
           <ul className="navbar__links">
             {links.map(link => (
               <li key={link.text}>
-                <a href={link.href} target="_blank" rel="noopener noreferrer" className="navbar__link">
+                <a href={link.href} className="navbar__link" onClick={() => setMenuOpen(false)}>
                   {link.text}
                 </a>
               </li>

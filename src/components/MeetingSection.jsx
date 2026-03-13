@@ -3,7 +3,7 @@ import './MeetingSection.css'
 
 function MeetingSection({ onOpenForm }) {
   return (
-    <section className="meeting">
+    <section className="meeting" id="meeting">
       {/* Glow effect */}
       <div className="meeting__glow" />
 

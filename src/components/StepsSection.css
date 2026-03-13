@@ -2,16 +2,16 @@
   width: 100%;
   height: 770px;
   position: relative;
-  background: linear-gradient(180deg, #161f4e 0%, #202358 100%);
+  background: linear-gradient(180deg, #192051 0%, #1a2154 10%, #202358 100%);
   overflow: hidden;
   --offset: max(0px, calc((100vw - 1440px) / 2));
 }
 
 .steps__title {
   position: absolute;
-  left: calc(var(--offset) + 522px);
+  left: calc(var(--offset) + 510px);
   top: 82px;
-  width: 396px;
+  width: 420px;
   height: 70px;
   font-weight: 700;
   font-size: 70px;
@@ -103,7 +103,7 @@
 
 .steps__dot {
   border-radius: 50%;
-  background: #3e57da;
+  background: #0078d4;
 }
 
 .steps__dot--small {
@@ -122,13 +122,14 @@
 }
 
 .steps__label {
-  margin-top: 50px;
+  margin-top: 39px;
   font-weight: 500;
   font-size: 30px;
   line-height: 37.5px;
   letter-spacing: -0.6px;
   color: #f6f8ff;
   text-align: center;
+  vertical-align: top;
 }
 
 .steps__label strong {
