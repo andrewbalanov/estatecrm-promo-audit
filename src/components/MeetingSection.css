@@ -76,7 +76,7 @@
 }
 
 /* Tablet */
-@media (max-width: 1024px) {
+@media (max-width: 1360px) {
   .meeting {
     height: auto;
     padding: 60px 40px 80px;

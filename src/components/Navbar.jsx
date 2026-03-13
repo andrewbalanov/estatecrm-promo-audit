@@ -14,9 +14,9 @@ function Navbar({ onOpenForm }) {
   return (
     <nav className="navbar">
       <div className="navbar__inner">
-        <div className="navbar__logo">
+        <a href="#" className="navbar__logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <img src={`${import.meta.env.BASE_URL}images/logo.png`} alt="EstateCRM" className="navbar__logo-img" />
-        </div>
+        </a>
 
         <button
           className="navbar__burger"
@@ -31,9 +31,9 @@ function Navbar({ onOpenForm }) {
 
         <div className={`navbar__menu ${menuOpen ? 'navbar__menu--open' : ''}`}>
           <div className="navbar__mobile-header">
-            <div className="navbar__logo">
+            <a href="#" className="navbar__logo" onClick={() => { setMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
               <img src={`${import.meta.env.BASE_URL}images/logo.png`} alt="EstateCRM" className="navbar__logo-img" />
-            </div>
+            </a>
             <button
               className="navbar__close"
               onClick={() => setMenuOpen(false)}

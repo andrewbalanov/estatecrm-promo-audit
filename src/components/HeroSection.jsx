@@ -1,8 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 import './HeroSection.css'
 
+const FIVE_DAYS_MS = 5 * 24 * 60 * 60 * 1000
+
+function getTimeLeft() {
+  const now = Date.now()
+  const cycle = now % FIVE_DAYS_MS
+  const remaining = FIVE_DAYS_MS - cycle
+  const totalSec = Math.floor(remaining / 1000)
+  const d = Math.floor(totalSec / 86400)
+  const h = Math.floor((totalSec % 86400) / 3600)
+  const m = Math.floor((totalSec % 3600) / 60)
+  const s = totalSec % 60
+  const pad = (n) => String(n).padStart(2, '0')
+  return `${d}д ${pad(h)}:${pad(m)}:${pad(s)}`
+}
+
 function HeroSection({ onOpenForm }) {
+  const [countdown, setCountdown] = useState(getTimeLeft)
+
+  useEffect(() => {
+    const id = setInterval(() => setCountdown(getTimeLeft()), 1000)
+    return () => clearInterval(id)
+  }, [])
+
   return (
     <section className="hero">
       <div className="hero__glow hero__glow--1" />
@@ -22,10 +44,9 @@ function HeroSection({ onOpenForm }) {
             Записаться на аудит
           </button>
           <div className="hero__trial">
-            <svg className="hero__trial-icon" width="20" height="20" viewBox="0 0 24 24" fill="white">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
-            </svg>
-            <span className="hero__trial-text">Бесплатно 3 дня<br/>71:59:59</span>
+            <span className="hero__trial-text">Бесплатная консультация</span>
+            <span className="hero__trial-sep" />
+            <span className="hero__trial-timer">{countdown}</span>
           </div>
         </div>
       </div>
@@ -37,7 +58,7 @@ function HeroSection({ onOpenForm }) {
         <div className="hero__card hero__card--left">
           <div className="hero__cal">
             <span className="hero__cal-arrow">◀</span>
-            <span className="hero__cal-range">Фев 2025 - Фев 226</span>
+            <span className="hero__cal-range">Фев 2025 - Фев 2026</span>
             <span className="hero__cal-arrow">▶</span>
           </div>
           <div className="hero__donut-wrap">
@@ -76,7 +97,7 @@ function HeroSection({ onOpenForm }) {
             <div className="hero__ops-row">
               <span className="hero__ops-dt">Дек. 25</span>
               <span className="hero__ops-ico hero__ops-ico--navy">
-                <svg viewBox="0 0 16 16" width="12" height="12"><path d="M4 4h8v8H4z" rx="1" fill="#fff"/></svg>
+                <svg viewBox="0 0 16 16" width="12" height="12"><rect x="4" y="4" width="8" height="8" rx="1" fill="#fff"/></svg>
               </span>
               <span className="hero__ops-tx">Бронь, ЖК Свет, кв. 56</span>
               <span className="hero__ops-am hero__ops-am--g">+₽450К</span>
@@ -84,7 +105,7 @@ function HeroSection({ onOpenForm }) {
             <div className="hero__ops-row">
               <span className="hero__ops-dt">Дек. 25</span>
               <span className="hero__ops-ico hero__ops-ico--navy">
-                <svg viewBox="0 0 16 16" width="12" height="12"><path d="M4 4h8v8H4z" rx="1" fill="#fff"/></svg>
+                <svg viewBox="0 0 16 16" width="12" height="12"><rect x="4" y="4" width="8" height="8" rx="1" fill="#fff"/></svg>
               </span>
               <span className="hero__ops-tx">Бронь, ЖК Свет, машиноместо</span>
               <span className="hero__ops-am hero__ops-am--g">+₽150К</span>
