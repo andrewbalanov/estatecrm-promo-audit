@@ -4,23 +4,40 @@ import './Navbar.css'
 function Navbar({ onOpenForm }) {
   const [open, setOpen] = useState(false)
 
+  const scrollToId = (id) => (e) => {
+    e.preventDefault()
+    setOpen(false)
+    const el = document.getElementById(id)
+    if (el) {
+      const offset = 80 // navbar height
+      const y = el.getBoundingClientRect().top + window.scrollY - offset
+      window.scrollTo({ top: y, behavior: 'smooth' })
+    }
+  }
+
+  const handleLogoClick = (e) => {
+    e.preventDefault()
+    setOpen(false)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   const links = [
-    { text: 'Функционал', href: 'https://estatecrm.io/#features' },
-    { text: 'Продукты', href: 'https://estatecrm.io/#products' },
-    { text: 'Кейсы', href: 'https://estatecrm.io/#cases' },
-    { text: 'Интеграции', href: 'https://estatecrm.io/#integrations' },
+    { text: 'Рынок', id: 'whynow' },
+    { text: 'Аудит', id: 'audit' },
+    { text: 'Встреча', id: 'meeting' },
+    { text: 'Записаться', id: 'book' },
   ]
 
   return (
     <header className="nav">
       <div className="nav__inner">
-        <a className="nav__logo" href="https://estatecrm.io" aria-label="EstateCRM">
+        <a className="nav__logo" href="#top" aria-label="EstateCRM — к началу" onClick={handleLogoClick}>
           <img src={`${import.meta.env.BASE_URL}images/new/logo.png`} alt="EstateCRM" />
         </a>
 
         <nav className={`nav__menu ${open ? 'nav__menu--open' : ''}`}>
           {links.map(l => (
-            <a key={l.href} className="nav__link" href={l.href} onClick={() => setOpen(false)}>
+            <a key={l.id} className="nav__link" href={`#${l.id}`} onClick={scrollToId(l.id)}>
               {l.text}
             </a>
           ))}

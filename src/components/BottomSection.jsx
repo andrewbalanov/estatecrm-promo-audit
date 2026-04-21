@@ -4,13 +4,20 @@ import './BottomSection.css'
 const BITRIX_WEBHOOK = 'https://tracebs.bitrix24.ru/rest/2/7det75s26t8s9sz6/'
 
 function BottomSection() {
-  const [form, setForm] = useState({ name: '', phone: '', company: '', email: '' })
+  const [form, setForm] = useState({
+    name: '',
+    phone: '',
+    company: '',
+    email: '',
+    consent: true,
+    marketing: true,
+  })
   const [status, setStatus] = useState('idle')
   const [errorMsg, setErrorMsg] = useState('')
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setForm(prev => ({ ...prev, [name]: value }))
+    const { name, value, type, checked } = e.target
+    setForm(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }))
   }
 
   const handleSubmit = async (e) => {
@@ -31,7 +38,7 @@ function BottomSection() {
             SOURCE_ID: 'UC_RP7YY3',
             UF_CRM_1760704782049: 'https://promo.estatecrm.io/audit/',
             UF_CRM_1738824489: 'Записаться (нижний блок)',
-            COMMENTS: 'Источник: Лендинг «Аудит CRM», нижний блок формы',
+            COMMENTS: `Источник: Лендинг «Аудит CRM», нижний блок формы\nМаркетинговая рассылка: ${form.marketing ? 'Да' : 'Нет'}`,
           },
         }),
       })
@@ -44,8 +51,9 @@ function BottomSection() {
           company: form.company,
           email: form.email,
           phone: form.phone,
-          consent: true,
-          marketing: true,
+          consent: form.consent,
+          marketing: form.marketing,
+          formType: 'bottom',
         }),
       }).catch(err => console.error('Email notification error:', err))
 
@@ -53,7 +61,7 @@ function BottomSection() {
       const data = await bitrixResponse.json()
       if (data.result) {
         setStatus('success')
-        setForm({ name: '', phone: '', company: '', email: '' })
+        setForm({ name: '', phone: '', company: '', email: '', consent: true, marketing: true })
       } else {
         console.error('Bitrix24 error:', data)
         setErrorMsg('Не удалось отправить заявку. Попробуйте ещё раз.')
@@ -73,7 +81,7 @@ function BottomSection() {
         <img className="bottom__arrow" src={`${base}images/new/arrow-3d.png`} alt="" aria-hidden />
         <div className="bottom__content">
           <h2 className="bottom__title">
-            <em>60 минут</em>, которые <br /> покажут, где ваш <br /> проект теряет прибыль
+            <em>60&nbsp;минут</em>, которые <br /> покажут, где ваш <br /> проект теряет прибыль
           </h2>
         </div>
 
@@ -134,9 +142,35 @@ function BottomSection() {
                   disabled={status === 'loading'}
                 />
               </div>
-              <p className="bottom__legal">
-                Нажимая на кнопку, вы принимаете <a href="https://estatecrm.io/privacy" target="_blank" rel="noreferrer">Политику конфиденциальности</a>
-              </p>
+
+              <label className="bottom__checkbox">
+                <input
+                  type="checkbox"
+                  name="consent"
+                  checked={form.consent}
+                  onChange={handleChange}
+                  required
+                  disabled={status === 'loading'}
+                />
+                <span>
+                  Согласие на обработку{' '}
+                  <a href="https://estatecrm.io/privacy" target="_blank" rel="noreferrer">персональных данных</a>
+                </span>
+              </label>
+              <label className="bottom__checkbox">
+                <input
+                  type="checkbox"
+                  name="marketing"
+                  checked={form.marketing}
+                  onChange={handleChange}
+                  disabled={status === 'loading'}
+                />
+                <span>
+                  Хочу получать email с новыми кейсами, рекламой и{' '}
+                  <a href="https://estatecrm.io/privacy" target="_blank" rel="noreferrer">быть в курсе важных событий</a>
+                </span>
+              </label>
+
               {status === 'error' && (
                 <p className="bottom__error">{errorMsg}</p>
               )}

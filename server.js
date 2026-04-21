@@ -26,14 +26,15 @@ const transporter = nodemailer.createTransport({
   },
 })
 
-function buildEmailHtml({ name, company, email, phone, consent, marketing, url }) {
+function buildEmailHtml({ name, company, email, phone, consent, marketing, url, label }) {
   const fields = [
+    ...(label ? [{ label: 'Форма', value: label }] : []),
     { label: 'Имя', value: name },
     { label: 'Название компании', value: company },
     { label: 'Рабочая почта', value: `<a href="mailto:${email}" style="color: #d4762c; text-decoration: none;">${email}</a>` },
     { label: 'Телефон', value: phone },
     { label: 'Согласие', value: consent ? 'Согласие на обработку персональных данных' : 'Не дано' },
-    { label: 'Согласие (копия)', value: marketing ? 'Хочу получать email с новыми кейсами, рекламой и быть в курсе важных событий' : 'Отказ от рассылки' },
+    { label: 'Рассылка', value: marketing ? 'Хочу получать email с новыми кейсами, рекламой и быть в курсе важных событий' : 'Отказ от рассылки' },
     { label: 'URL', value: `<a href="${url}" style="color: #d4762c; text-decoration: none;">${url}</a>` },
   ]
 
@@ -72,21 +73,28 @@ function buildEmailHtml({ name, company, email, phone, consent, marketing, url }
 </html>`
 }
 
+const FORM_LABELS = {
+  audit: 'Форма "Аудит CRM"',
+  presentation: 'Форма "Скачать презентацию"',
+  bottom: 'Форма в нижнем блоке',
+}
+
 const sendEmailHandler = async (req, res) => {
-  const { name, company, email, phone, consent, marketing } = req.body
+  const { name, company, email, phone, consent, marketing, formType } = req.body
 
   if (!name || !company || !email || !phone) {
     return res.status(400).json({ error: 'Missing required fields' })
   }
 
   const pageUrl = req.headers.referer || 'https://estatecrm.io/audit/'
+  const label = FORM_LABELS[formType] || FORM_LABELS.audit
 
   try {
     await transporter.sendMail({
       from: '"EstateCRM - Sales" <sales@estatecrm.io>',
       to: 'sales@estatecrm.io',
-      subject: 'Новая заявка: Лендинг "Аудит" - Форма "Аудит CRM"',
-      html: buildEmailHtml({ name, company, email, phone, consent, marketing, url: pageUrl }),
+      subject: `Новая заявка: Лендинг "Аудит" — ${label}`,
+      html: buildEmailHtml({ name, company, email, phone, consent, marketing, url: pageUrl, label }),
     })
     res.json({ success: true })
   } catch (err) {

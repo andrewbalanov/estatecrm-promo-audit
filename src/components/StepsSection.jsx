@@ -5,13 +5,13 @@ const CARDS = [
   {
     icon: 'icon-bubble.png',
     iconMod: '',
-    title: 'Диагностика модели продаж',
+    title: <>Диагностика <br /> модели продаж</>,
     text: 'Найдем разрывы в данных между системами и покажем, где именно вы теряете прибыль',
   },
   {
     icon: 'icon-trophy.png',
     iconMod: 'trophy',
-    title: 'Бенчмарк с лучшими практиками',
+    title: <>Бенчмарк <br /> с лучшими практиками</>,
     text: 'Сравним ваш кейс с практиками 150+ застройщиков, с которыми мы работаем 10+ лет',
   },
   {
@@ -25,7 +25,7 @@ const CARDS = [
 function StepsSection() {
   const base = import.meta.env.BASE_URL
   return (
-    <section className="audit" id="steps">
+    <section className="audit" id="audit">
       <div className="audit__container">
         <h2 className="audit__title">
           Проведем аудит вашего <br /> коммерческого блока

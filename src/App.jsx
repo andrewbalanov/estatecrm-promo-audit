@@ -7,23 +7,26 @@ import StepsSection from './components/StepsSection'
 import MeetingSection from './components/MeetingSection'
 import BottomSection from './components/BottomSection'
 import AuditFormModal from './components/AuditFormModal'
+import PresentationFormModal from './components/PresentationFormModal'
 import './App.css'
 
 function App() {
-  const [formOpen, setFormOpen] = useState(false)
-  const openForm = () => setFormOpen(true)
-  const closeForm = () => setFormOpen(false)
+  const [modal, setModal] = useState(null) // 'audit' | 'presentation' | null
+  const openAudit = () => setModal('audit')
+  const openPresentation = () => setModal('presentation')
+  const closeModal = () => setModal(null)
 
   return (
-    <div className="landing">
-      <Navbar onOpenForm={openForm} />
-      <HeroSection onOpenForm={openForm} />
+    <div className="landing" id="top">
+      <Navbar onOpenForm={openAudit} />
+      <HeroSection onOpenForm={openAudit} onOpenPresentation={openPresentation} />
       <WhyNowSection />
       <QuoteSection />
       <StepsSection />
       <MeetingSection />
-      <BottomSection onOpenForm={openForm} />
-      <AuditFormModal isOpen={formOpen} onClose={closeForm} />
+      <BottomSection />
+      <AuditFormModal isOpen={modal === 'audit'} onClose={closeModal} />
+      <PresentationFormModal isOpen={modal === 'presentation'} onClose={closeModal} />
     </div>
   )
 }

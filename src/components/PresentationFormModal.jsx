@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import './AuditFormModal.css'
 
 const BITRIX_WEBHOOK = 'https://tracebs.bitrix24.ru/rest/2/7det75s26t8s9sz6/'
+const PDF_URL = `${import.meta.env.BASE_URL}files/estatecrm-audit-2026.pdf`
 
-function AuditFormModal({ isOpen, onClose }) {
+function PresentationFormModal({ isOpen, onClose }) {
   const [form, setForm] = useState({
     name: '',
     company: '',
@@ -12,7 +13,7 @@ function AuditFormModal({ isOpen, onClose }) {
     consent: true,
     marketing: true,
   })
-  const [status, setStatus] = useState('idle') // idle | loading | success | error
+  const [status, setStatus] = useState('idle')
   const [errorMsg, setErrorMsg] = useState('')
 
   if (!isOpen) return null
@@ -22,25 +23,33 @@ function AuditFormModal({ isOpen, onClose }) {
     setForm(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }))
   }
 
+  const triggerDownload = () => {
+    const link = document.createElement('a')
+    link.href = PDF_URL
+    link.download = 'EstateCRM-Audit-2026.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setStatus('loading')
-
     try {
       const bitrixPromise = fetch(`${BITRIX_WEBHOOK}crm.lead.add.json`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           fields: {
-            TITLE: `Аудит CRM — ${form.company}`,
+            TITLE: `Скачивание презентации — ${form.company || form.name}`,
             NAME: form.name,
             COMPANY_TITLE: form.company,
             EMAIL: [{ VALUE: form.email, VALUE_TYPE: 'WORK' }],
             PHONE: [{ VALUE: form.phone, VALUE_TYPE: 'WORK' }],
             SOURCE_ID: 'UC_RP7YY3',
             UF_CRM_1760704782049: 'https://promo.estatecrm.io/audit/',
-            UF_CRM_1738824489: 'Записаться на аудит',
-            COMMENTS: `Источник: Лендинг «Аудит CRM»\nМаркетинговая рассылка: ${form.marketing ? 'Да' : 'Нет'}`,
+            UF_CRM_1738824489: 'Скачать презентацию',
+            COMMENTS: `Источник: Лендинг «Аудит CRM» — форма скачивания презентации\nМаркетинговая рассылка: ${form.marketing ? 'Да' : 'Нет'}`,
           },
         }),
       })
@@ -55,7 +64,7 @@ function AuditFormModal({ isOpen, onClose }) {
           phone: form.phone,
           consent: form.consent,
           marketing: form.marketing,
-          formType: 'audit',
+          formType: 'presentation',
         }),
       }).catch(err => console.error('Email notification error:', err))
 
@@ -64,13 +73,10 @@ function AuditFormModal({ isOpen, onClose }) {
 
       if (data.result) {
         setStatus('success')
+        setTimeout(triggerDownload, 600)
       } else {
         console.error('Bitrix24 error:', data)
-        setErrorMsg(
-          data.error === 'insufficient_scope'
-            ? 'Ошибка настройки CRM. Свяжитесь с нами по телефону.'
-            : 'Не удалось отправить заявку. Попробуйте ещё раз.'
-        )
+        setErrorMsg('Не удалось отправить заявку. Попробуйте ещё раз.')
         setStatus('error')
       }
     } catch (err) {
@@ -96,95 +102,59 @@ function AuditFormModal({ isOpen, onClose }) {
       <div className="modal">
         <div className="modal__header">
           <button className="modal__close" onClick={handleClose} type="button">&times;</button>
-          <h2 className="modal__title">Аудит системы продаж</h2>
+          <h2 className="modal__title">Скачать презентацию</h2>
           <p className="modal__subtitle">
-            Запишитесь на бесплатную встречу с экспертом и получите план цифровизации продаж
+            Оставьте контакты — мы пришлём презентацию «Антикризисный Аудит 2026»
           </p>
         </div>
         {status === 'success' ? (
           <div className="modal__body">
             <div className="modal__success">
               <div className="modal__success-icon">&#10003;</div>
-              <h3>Заявка отправлена!</h3>
-              <p>Мы свяжемся с вами в ближайшее время для согласования даты аудита.</p>
-              <button className="modal__submit" type="button" onClick={handleClose}>Закрыть</button>
+              <h3>Презентация отправлена</h3>
+              <p>Скачивание начнётся автоматически. Если этого не произошло, нажмите кнопку ниже.</p>
+              <button className="modal__submit" type="button" onClick={triggerDownload}>
+                Скачать презентацию
+              </button>
+              <button
+                className="modal__submit modal__submit--ghost"
+                type="button"
+                onClick={handleClose}
+                style={{ marginTop: 12 }}
+              >
+                Закрыть
+              </button>
             </div>
           </div>
         ) : (
           <form className="modal__body" onSubmit={handleSubmit}>
             <div className="modal__field">
               <label className="modal__label">Имя <span>*</span></label>
-              <input
-                className="modal__input"
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                disabled={status === 'loading'}
-              />
+              <input className="modal__input" type="text" name="name" value={form.name} onChange={handleChange} required disabled={status === 'loading'} />
             </div>
             <div className="modal__field">
               <label className="modal__label">Название компании <span>*</span></label>
-              <input
-                className="modal__input"
-                type="text"
-                name="company"
-                value={form.company}
-                onChange={handleChange}
-                required
-                disabled={status === 'loading'}
-              />
+              <input className="modal__input" type="text" name="company" value={form.company} onChange={handleChange} required disabled={status === 'loading'} />
             </div>
             <div className="modal__field">
               <label className="modal__label">Рабочая почта <span>*</span></label>
-              <input
-                className="modal__input"
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                disabled={status === 'loading'}
-              />
+              <input className="modal__input" type="email" name="email" value={form.email} onChange={handleChange} required disabled={status === 'loading'} />
             </div>
             <div className="modal__field">
               <label className="modal__label">Телефон <span>*</span></label>
-              <input
-                className="modal__input"
-                type="tel"
-                name="phone"
-                value={form.phone}
-                onChange={handleChange}
-                required
-                disabled={status === 'loading'}
-              />
+              <input className="modal__input" type="tel" name="phone" value={form.phone} onChange={handleChange} required disabled={status === 'loading'} />
             </div>
             <label className="modal__checkbox">
-              <input
-                type="checkbox"
-                name="consent"
-                checked={form.consent}
-                onChange={handleChange}
-                disabled={status === 'loading'}
-              />
-              <span>Согласие на обработку <a href="#">персональных данных</a></span>
+              <input type="checkbox" name="consent" checked={form.consent} onChange={handleChange} required disabled={status === 'loading'} />
+              <span>Согласие на обработку <a href="https://estatecrm.io/privacy" target="_blank" rel="noreferrer">персональных данных</a></span>
             </label>
             <label className="modal__checkbox">
-              <input
-                type="checkbox"
-                name="marketing"
-                checked={form.marketing}
-                onChange={handleChange}
-                disabled={status === 'loading'}
-              />
-              <span>Хочу получать email с новыми кейсами, рекламой и <a href="#">быть в курсе важных событий</a></span>
+              <input type="checkbox" name="marketing" checked={form.marketing} onChange={handleChange} disabled={status === 'loading'} />
+              <span>Хочу получать email с новыми кейсами, рекламой и <a href="https://estatecrm.io/privacy" target="_blank" rel="noreferrer">быть в курсе важных событий</a></span>
             </label>
-            {status === 'error' && (
-              <p className="modal__error">{errorMsg}</p>
-            )}
+            {status === 'error' && (<p className="modal__error">{errorMsg}</p>)}
             <button className="modal__submit" type="submit" disabled={status === 'loading'}>
-              {status === 'loading' ? 'Отправка...' : 'Записаться на аудит'}
+              {status === 'loading' ? 'Отправка...' : 'Получить презентацию'}
             </button>
           </form>
         )}
@@ -193,4 +163,4 @@ function AuditFormModal({ isOpen, onClose }) {
   )
 }
 
-export default AuditFormModal
+export default PresentationFormModal
