@@ -215,8 +215,10 @@
     min-height: 52px;
   }
   .hero__visual {
-    min-height: 280px;
+    min-height: 340px;
     order: 2;
+    margin-top: 0;
+    padding-bottom: 160px;
   }
   .hero__content {
     order: 1;
@@ -224,18 +226,17 @@
   .hero__dashboard {
     width: 100%;
     max-width: 440px;
+    margin-top: 0;
   }
   .hero__gear-main {
-    width: 280px;
+    width: 320px;
     top: auto;
-    bottom: -30px;
+    bottom: -60px;
     left: auto;
-    right: -50px;
+    right: -30px;
   }
   .hero__gear-corner {
-    width: 200px;
-    top: -30px;
-    right: -60px;
+    display: none;
   }
 }
 

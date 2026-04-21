@@ -119,6 +119,5 @@
     margin-top: 40px;
   }
   .meeting__card { padding: 26px 24px; }
-  .meeting__point--tr { width: 160px; right: -40px; top: -20px; opacity: 0.5; }
-  .meeting__point--bl { display: none; }
+  .meeting__point { display: none; }
 }
