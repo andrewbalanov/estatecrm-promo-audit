@@ -1,46 +1,29 @@
 import React from 'react'
 import './WhyNowSection.css'
 
+const STATS = [
+  { value: '>50%', label: 'лидов', desc: 'не доходят от заявки до ДДУ из-за разрозненных систем' },
+  { value: 'х2', label: 'цикл сделки', desc: 'покупатели дольше и внимательнее выбирают квартиру' },
+  { value: '31%', label: 'доля', desc: 'антирекорд проданных квартир в новостройках' },
+]
+
 function WhyNowSection() {
   return (
     <section className="whynow" id="whynow">
-      {/* Glow effect */}
-      <div className="whynow__glow" />
+      <div className="whynow__container">
+        <div className="whynow__eyebrow">РЫНОК НЕДВИЖИМОСТИ 2026</div>
+        <h2 className="whynow__title">
+          Почему текущая модель продаж <br /> больше не работает
+        </h2>
 
-      <h2 className="whynow__title">
-        Почему это важно сейчас?
-      </h2>
-
-      <p className="whynow__subtitle">
-        Наше исследование с ТОП-50 застройщиков показывает:
-      </p>
-
-      {/* Gradient strip behind stats */}
-      <div className="whynow__strip" />
-
-      <div className="whynow__stats">
-        <div className="whynow__stat">
-          <span className="whynow__stat-number">&gt;50%</span>
-          <span className="whynow__stat-label">лидов</span>
-          <p className="whynow__stat-desc">
-            не доходят от заявки до ДДУ из-за разрозненных систем
-          </p>
-        </div>
-
-        <div className="whynow__stat">
-          <span className="whynow__stat-number">56%</span>
-          <span className="whynow__stat-label">девелоперов</span>
-          <p className="whynow__stat-desc">
-            оценивают эффективность своей CRM лишь на 3 из 5
-          </p>
-        </div>
-
-        <div className="whynow__stat">
-          <span className="whynow__stat-number">в 2026</span>
-          <span className="whynow__stat-label">ключевой фокус</span>
-          <p className="whynow__stat-desc">
-            на росте конверсий, а не объёме трафика
-          </p>
+        <div className="whynow__grid">
+          {STATS.map((s, i) => (
+            <article key={i} className="whynow__card">
+              <div className="whynow__value">{s.value}</div>
+              <div className="whynow__label">{s.label}</div>
+              <p className="whynow__desc">{s.desc}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>

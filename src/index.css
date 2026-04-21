@@ -10,8 +10,12 @@ html {
 
 body {
   font-family: 'Geologica', system-ui, sans-serif;
-  background: #ffffff;
+  background: linear-gradient(135deg, #E6EDFF 0%, #F0F4FF 55%, #FFFFFF 100%);
+  background-attachment: fixed;
+  color: #17174A;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -25,4 +29,18 @@ img {
   -webkit-user-select: none;
   user-select: none;
   pointer-events: none;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, textarea {
+  font-family: inherit;
 }

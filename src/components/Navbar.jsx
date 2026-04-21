@@ -2,75 +2,52 @@ import React, { useState } from 'react'
 import './Navbar.css'
 
 function Navbar({ onOpenForm }) {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [open, setOpen] = useState(false)
 
   const links = [
-    { text: 'Как проходит', href: '#steps' },
-    { text: 'Что получите', href: '#meeting' },
-    { text: 'Почему сейчас', href: '#whynow' },
-    { text: 'Эксперт', href: '#book' },
+    { text: 'Функционал', href: 'https://estatecrm.io/#features' },
+    { text: 'Продукты', href: 'https://estatecrm.io/#products' },
+    { text: 'Кейсы', href: 'https://estatecrm.io/#cases' },
+    { text: 'Интеграции', href: 'https://estatecrm.io/#integrations' },
   ]
 
   return (
-    <nav className="navbar">
-      <div className="navbar__inner">
-        <a href="#" className="navbar__logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <img src={`${import.meta.env.BASE_URL}images/logo.png`} alt="EstateCRM" className="navbar__logo-img" />
+    <header className="nav">
+      <div className="nav__inner">
+        <a className="nav__logo" href="https://estatecrm.io" aria-label="EstateCRM">
+          <img src={`${import.meta.env.BASE_URL}images/new/logo.png`} alt="EstateCRM" />
         </a>
 
-        <button
-          className="navbar__burger"
-          onClick={() => setMenuOpen(true)}
-          type="button"
-          aria-label="Меню"
-        >
-          <span />
-          <span />
-          <span />
+        <nav className={`nav__menu ${open ? 'nav__menu--open' : ''}`}>
+          {links.map(l => (
+            <a key={l.href} className="nav__link" href={l.href} onClick={() => setOpen(false)}>
+              {l.text}
+            </a>
+          ))}
+          <button
+            className="nav__cta nav__cta--mobile"
+            type="button"
+            onClick={() => { setOpen(false); onOpenForm?.() }}
+          >
+            Записаться на аудит
+          </button>
+        </nav>
+
+        <button className="nav__cta nav__cta--desktop" type="button" onClick={onOpenForm}>
+          Записаться на аудит
         </button>
 
-        <div className={`navbar__menu ${menuOpen ? 'navbar__menu--open' : ''}`}>
-          <div className="navbar__mobile-header">
-            <a href="#" className="navbar__logo" onClick={() => { setMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
-              <img src={`${import.meta.env.BASE_URL}images/logo.png`} alt="EstateCRM" className="navbar__logo-img" />
-            </a>
-            <button
-              className="navbar__close"
-              onClick={() => setMenuOpen(false)}
-              type="button"
-              aria-label="Закрыть"
-            >
-              <span /><span />
-            </button>
-          </div>
-
-          <ul className="navbar__links">
-            {links.map(link => (
-              <li key={link.text}>
-                <a href={link.href} className="navbar__link" onClick={() => setMenuOpen(false)}>
-                  {link.text}
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          <div className="navbar__right">
-            <svg className="navbar__globe" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="10" cy="10" r="9" stroke="#ffffff" strokeWidth="1.3" />
-              <ellipse cx="10" cy="10" rx="4.5" ry="9" stroke="#ffffff" strokeWidth="1.3" />
-              <line x1="1" y1="10" x2="19" y2="10" stroke="#ffffff" strokeWidth="1.3" />
-            </svg>
-            <a href="tel:+74950193013" className="navbar__phone">
-              +7 (495) 019-30-13
-            </a>
-            <button className="navbar__cta" onClick={onOpenForm} type="button">
-              Записаться на аудит
-              <span className="navbar__cta-arrow">→</span>
-            </button>
-          </div>
-        </div>
+        <button
+          className={`nav__burger ${open ? 'nav__burger--open' : ''}`}
+          type="button"
+          aria-label="Меню"
+          aria-expanded={open}
+          onClick={() => setOpen(v => !v)}
+        >
+          <span /><span /><span />
+        </button>
       </div>
-    </nav>
+    </header>
   )
 }
 

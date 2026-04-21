@@ -1,220 +1,44 @@
-import React, { useState, useEffect } from 'react'
-import Navbar from './Navbar'
+import React from 'react'
 import './HeroSection.css'
 
-const FIVE_DAYS_MS = 5 * 24 * 60 * 60 * 1000
-
-function getTimeLeft() {
-  const now = Date.now()
-  const cycle = now % FIVE_DAYS_MS
-  const remaining = FIVE_DAYS_MS - cycle
-  const totalSec = Math.floor(remaining / 1000)
-  const d = Math.floor(totalSec / 86400)
-  const h = Math.floor((totalSec % 86400) / 3600)
-  const m = Math.floor((totalSec % 3600) / 60)
-  const s = totalSec % 60
-  const pad = (n) => String(n).padStart(2, '0')
-  return `${d}д ${pad(h)}:${pad(m)}:${pad(s)}`
-}
-
 function HeroSection({ onOpenForm }) {
-  const [countdown, setCountdown] = useState(getTimeLeft)
-
-  useEffect(() => {
-    const id = setInterval(() => setCountdown(getTimeLeft()), 1000)
-    return () => clearInterval(id)
-  }, [])
+  const base = import.meta.env.BASE_URL
 
   return (
     <section className="hero">
-      <div className="hero__glow hero__glow--1" />
-      <div className="hero__glow hero__glow--2" />
-      <Navbar onOpenForm={onOpenForm} />
-      <div className="hero__content">
-        <h1 className="hero__title">
-          Построим эталонную систему{' '}
-          для управления продажами девелопера
-        </h1>
-        <p className="hero__subtitle">
-          Эксперты EstateCRM приглашают застройщиков на бесплатный аудит вашей воронки продаж
-          и разработку плана цифровизации коммерческого блока
-        </p>
-        <div className="hero__actions">
-          <button className="hero__button" onClick={onOpenForm} type="button">
-            Записаться на аудит
-          </button>
-          <div className="hero__trial">
-            <span className="hero__trial-text">Бесплатная консультация</span>
-            <span className="hero__trial-sep" />
-            <span className="hero__trial-timer">{countdown}</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Dashboard cards */}
-      <div className="hero__dashboard">
-
-        {/* 1 — Left column: calendar + donut */}
-        <div className="hero__card hero__card--left">
-          <div className="hero__cal">
-            <span className="hero__cal-arrow">◀</span>
-            <span className="hero__cal-range">Фев 2025 - Фев 2026</span>
-            <span className="hero__cal-arrow">▶</span>
-          </div>
-          <div className="hero__donut-wrap">
-            <svg className="hero__donut-ring" viewBox="0 0 140 140">
-              <circle cx="70" cy="70" r="56" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="10"/>
-              <circle cx="70" cy="70" r="56" fill="none" stroke="#3b9de6" strokeWidth="10"
-                strokeDasharray="245 107" strokeDashoffset="-54" strokeLinecap="round"/>
-            </svg>
-            <div className="hero__donut-info">
-              <span className="hero__donut-lbl">Годовой план, млн</span>
-              <span className="hero__donut-val">₽238,098</span>
-            </div>
-          </div>
-        </div>
-
-        {/* 2 — Operations table */}
-        <div className="hero__card hero__card--ops">
-          <div className="hero__ops-head">
-            <span className="hero__ops-ttl">Операции</span>
-            <span className="hero__ops-filter">Фильтр <small>▾</small></span>
-          </div>
-          <div className="hero__ops-cols">
-            <span>ДАТА</span>
-            <span>ТИП ОПЕРАЦИИ</span>
-            <span>ИТОГ</span>
-          </div>
-          <div className="hero__ops-body">
-            <div className="hero__ops-row">
-              <span className="hero__ops-dt">Дек. 25</span>
-              <span className="hero__ops-ico hero__ops-ico--blue">
-                <svg viewBox="0 0 16 16" width="12" height="12"><rect x="3" y="2" width="10" height="12" rx="1" fill="#fff"/></svg>
-              </span>
-              <span className="hero__ops-tx">Оплата рекламы, Директ</span>
-              <span className="hero__ops-am hero__ops-am--r">-₽45К</span>
-            </div>
-            <div className="hero__ops-row">
-              <span className="hero__ops-dt">Дек. 25</span>
-              <span className="hero__ops-ico hero__ops-ico--navy">
-                <svg viewBox="0 0 16 16" width="12" height="12"><rect x="4" y="4" width="8" height="8" rx="1" fill="#fff"/></svg>
-              </span>
-              <span className="hero__ops-tx">Бронь, ЖК Свет, кв. 56</span>
-              <span className="hero__ops-am hero__ops-am--g">+₽450К</span>
-            </div>
-            <div className="hero__ops-row">
-              <span className="hero__ops-dt">Дек. 25</span>
-              <span className="hero__ops-ico hero__ops-ico--navy">
-                <svg viewBox="0 0 16 16" width="12" height="12"><rect x="4" y="4" width="8" height="8" rx="1" fill="#fff"/></svg>
-              </span>
-              <span className="hero__ops-tx">Бронь, ЖК Свет, машиноместо</span>
-              <span className="hero__ops-am hero__ops-am--g">+₽150К</span>
-            </div>
-          </div>
-        </div>
-
-        {/* 3 — Average check */}
-        <div className="hero__card hero__card--avg">
-          <div className="hero__avg-left">
-            <span className="hero__avg-icon">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="#0078d4" strokeWidth="1.5"/>
-                <path d="M8 12h8M12 8v8" stroke="#0078d4" strokeWidth="1.5" strokeLinecap="round"/>
+      <img className="hero__gear-corner" src={`${base}images/new/gear-corner.png`} alt="" aria-hidden />
+      <div className="hero__container">
+        <div className="hero__content">
+          <span className="hero__badge">Бесплатный аудит для застройщиков</span>
+          <h1 className="hero__title">
+            Срок сделки вырос в 2 раза.{' '}
+            <span className="hero__title-accent">Ваша CRM к&nbsp;этому готова?</span>
+          </h1>
+          <p className="hero__subtitle">
+            Покажем, из-за каких процессов между маркетингом, продажами и финансами вы&nbsp;теряете прибыль
+          </p>
+          <div className="hero__actions">
+            <button className="hero__btn hero__btn--primary" type="button" onClick={onOpenForm}>
+              Записаться на аудит
+            </button>
+            <a
+              className="hero__btn hero__btn--ghost"
+              href="https://estatecrm.io/presentation.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Скачать презентацию
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                <path d="M12 4v12m0 0l-5-5m5 5l5-5M4 20h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </span>
-            <div>
-              <span className="hero__avg-label">Средний чек</span>
-              <span className="hero__avg-val">₽9 456 675<small>.00</small></span>
-            </div>
-          </div>
-          <span className="hero__avg-arrow">→</span>
-        </div>
-
-        {/* 4 — Profit chart (detailed) */}
-        <div className="hero__card hero__card--profit">
-          <div className="hero__profit-head">
-            <span className="hero__profit-ttl">Прибыль</span>
-            <div className="hero__profit-legend">
-              <span className="hero__profit-dot hero__profit-dot--exp" /> Расход
-              <span className="hero__profit-dot hero__profit-dot--inc" /> Доход
-              <span className="hero__profit-period">Месяц ▾</span>
-            </div>
-          </div>
-          <svg className="hero__profit-chart" viewBox="0 0 340 170">
-            {/* Grid lines */}
-            <line x1="36" y1="10" x2="330" y2="10" stroke="#f0f0f5" strokeWidth="0.7"/>
-            <line x1="36" y1="42" x2="330" y2="42" stroke="#f0f0f5" strokeWidth="0.7"/>
-            <line x1="36" y1="74" x2="330" y2="74" stroke="#f0f0f5" strokeWidth="0.7"/>
-            <line x1="36" y1="106" x2="330" y2="106" stroke="#f0f0f5" strokeWidth="0.7"/>
-            <line x1="36" y1="138" x2="330" y2="138" stroke="#f0f0f5" strokeWidth="0.7"/>
-            {/* Y labels */}
-            <text x="30" y="14" textAnchor="end" fontSize="8" fill="#9ca3af">40к</text>
-            <text x="30" y="46" textAnchor="end" fontSize="8" fill="#9ca3af">30к</text>
-            <text x="30" y="78" textAnchor="end" fontSize="8" fill="#9ca3af">20к</text>
-            <text x="30" y="110" textAnchor="end" fontSize="8" fill="#9ca3af">10к</text>
-            <text x="30" y="142" textAnchor="end" fontSize="8" fill="#9ca3af">0к</text>
-            {/* X labels */}
-            <text x="58" y="156" textAnchor="middle" fontSize="7" fill="#9ca3af">Пон.</text>
-            <text x="102" y="156" textAnchor="middle" fontSize="7" fill="#9ca3af">Вт.</text>
-            <text x="146" y="156" textAnchor="middle" fontSize="7" fill="#9ca3af">Ср.</text>
-            <text x="190" y="156" textAnchor="middle" fontSize="7" fill="#0078d4" fontWeight="600">Чт.</text>
-            <text x="234" y="156" textAnchor="middle" fontSize="7" fill="#9ca3af">Пт.</text>
-            <text x="278" y="156" textAnchor="middle" fontSize="7" fill="#9ca3af">Сб.</text>
-            <text x="322" y="156" textAnchor="middle" fontSize="7" fill="#9ca3af">Вс.</text>
-            {/* Dashed line — расход */}
-            <path d="M58,108 L102,95 L146,100 L190,68 L234,78 L278,88 L322,82"
-              fill="none" stroke="#93c5fd" strokeWidth="1.5" strokeDasharray="4 3"/>
-            {/* Solid line — доход */}
-            <path d="M58,118 L102,105 L146,90 L190,55 L234,65 L278,80 L322,90"
-              fill="none" stroke="#0078d4" strokeWidth="2"/>
-            {/* Vertical dashed guide */}
-            <line x1="190" y1="55" x2="190" y2="138" stroke="#93c5fd" strokeWidth="0.8" strokeDasharray="3 3"/>
-            {/* Active point */}
-            <circle cx="190" cy="55" r="4" fill="#0078d4"/>
-            <circle cx="190" cy="55" r="7" fill="none" stroke="#0078d4" strokeWidth="1" opacity="0.25"/>
-            {/* Tooltip */}
-            <rect x="152" y="38" width="76" height="14" rx="3" fill="#22c55e"/>
-            <text x="190" y="48" textAnchor="middle" fontSize="7" fill="#fff" fontWeight="600">-₽1,209 +9,488</text>
-          </svg>
-        </div>
-
-        {/* 5 — Marketing sources */}
-        <div className="hero__card hero__card--mkt">
-          <div className="hero__mkt-head">
-            <span className="hero__mkt-ttl">Маркетинг:<br/>источники</span>
-            <span className="hero__mkt-filter">Фильтр <small>▾</small></span>
-          </div>
-          <div className="hero__mkt-list">
-            <div className="hero__mkt-item">
-              <span className="hero__mkt-dot" data-color="blue" />
-              <span className="hero__mkt-name">Циан</span>
-              <span className="hero__mkt-bar"><i data-color="blue" style={{width:'72%'}} /></span>
-              <span className="hero__mkt-pct">32%</span>
-            </div>
-            <div className="hero__mkt-item">
-              <span className="hero__mkt-dot" data-color="red" />
-              <span className="hero__mkt-name">Авито</span>
-              <span className="hero__mkt-bar"><i data-color="red" style={{width:'54%'}} /></span>
-              <span className="hero__mkt-pct">24%</span>
-            </div>
-            <div className="hero__mkt-item">
-              <span className="hero__mkt-dot" data-color="green" />
-              <span className="hero__mkt-name">Сайт</span>
-              <span className="hero__mkt-bar"><i data-color="green" style={{width:'42%'}} /></span>
-              <span className="hero__mkt-pct">19%</span>
-            </div>
-            <div className="hero__mkt-item">
-              <span className="hero__mkt-dot" data-color="yellow" />
-              <span className="hero__mkt-name">Агент</span>
-              <span className="hero__mkt-bar"><i data-color="yellow" style={{width:'31%'}} /></span>
-              <span className="hero__mkt-pct">14%</span>
-            </div>
+            </a>
           </div>
         </div>
-
+        <div className="hero__visual">
+          <img className="hero__gear" src={`${base}images/new/hero-gear.png`} alt="" aria-hidden />
+          <img className="hero__dashboard" src={`${base}images/new/hero-dashboard.png`} alt="EstateCRM — Аналитика продаж" />
+        </div>
       </div>
-
-      <div className="hero__fade" />
     </section>
   )
 }
