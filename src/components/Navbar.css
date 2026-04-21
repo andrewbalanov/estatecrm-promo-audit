@@ -1,14 +1,15 @@
 .nav {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 50;
-  padding: 18px 0;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(23, 23, 74, 0.04);
+  padding: 14px 0;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(23, 23, 74, 0.06);
+  transition: padding 0.2s ease, background 0.2s ease;
 }
 
 .nav__inner {

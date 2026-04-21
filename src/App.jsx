@@ -6,6 +6,7 @@ import QuoteSection from './components/QuoteSection'
 import StepsSection from './components/StepsSection'
 import MeetingSection from './components/MeetingSection'
 import BottomSection from './components/BottomSection'
+import Footer from './components/Footer'
 import AuditFormModal from './components/AuditFormModal'
 import PresentationFormModal from './components/PresentationFormModal'
 import './App.css'
@@ -25,6 +26,7 @@ function App() {
       <StepsSection />
       <MeetingSection />
       <BottomSection />
+      <Footer />
       <AuditFormModal isOpen={modal === 'audit'} onClose={closeModal} />
       <PresentationFormModal isOpen={modal === 'presentation'} onClose={closeModal} />
     </div>
