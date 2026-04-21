@@ -12,8 +12,9 @@ function Footer() {
           <div className="footer__brand">
             <img className="footer__logo" src={`${base}images/new/logo.png`} alt="EstateCRM" />
             <p className="footer__tagline">
-              Операционная CRM для девелоперов. Помогаем&nbsp;150+ застройщикам управлять продажами,
-              маркетингом и&nbsp;финансами в&nbsp;едином контуре.
+              Единая цифровая экосистема для&nbsp;недвижимости. Комплексная CRM-система
+              для&nbsp;автоматизации процессов застройщиков, агентств недвижимости
+              и&nbsp;управляющих компаний на&nbsp;базе BPM и&nbsp;low-code технологий.
             </p>
           </div>
 
