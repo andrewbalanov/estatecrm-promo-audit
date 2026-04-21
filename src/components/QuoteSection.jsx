@@ -9,8 +9,11 @@ function QuoteSection() {
         <div className="quote__card">
           <p className="quote__text">
             <strong>Мы проанализировали процессы 150+ застройщиков и </strong>
-            <em>хотим  передать вам лучшие практики рынка</em>
-            <strong> для увеличения маржи  с проектов</strong>
+            <em>хотим передать вам лучшие практики рынка</em>
+            <br />
+            <strong>для увеличения маржи</strong>
+            <br />
+            <strong>с проектов</strong>
           </p>
         </div>
         <img

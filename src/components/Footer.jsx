@@ -46,11 +46,11 @@ function Footer() {
           <p className="footer__legal">
             © {year} EstateCRM. Все права защищены. Материалы сайта носят информационный характер
             и&nbsp;не&nbsp;являются публичной офертой. Отправляя заявку, вы&nbsp;соглашаетесь
-            с&nbsp;<a href="https://estatecrm.io/privacy" target="_blank" rel="noreferrer">Политикой конфиденциальности</a>
+            с&nbsp;<a href="https://estatecrm.io/confidentiality/" target="_blank" rel="noreferrer">Политикой конфиденциальности</a>
             {' '}и&nbsp;условиями обработки персональных данных.
           </p>
           <div className="footer__legal-links">
-            <a className="footer__link footer__link--small" href="https://estatecrm.io/privacy" target="_blank" rel="noreferrer">Политика конфиденциальности</a>
+            <a className="footer__link footer__link--small" href="https://estatecrm.io/confidentiality/" target="_blank" rel="noreferrer">Политика конфиденциальности</a>
             <a className="footer__link footer__link--small" href="https://estatecrm.io/terms" target="_blank" rel="noreferrer">Пользовательское соглашение</a>
           </div>
         </div>

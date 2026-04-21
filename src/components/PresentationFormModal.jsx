@@ -146,11 +146,11 @@ function PresentationFormModal({ isOpen, onClose }) {
             </div>
             <label className="modal__checkbox">
               <input type="checkbox" name="consent" checked={form.consent} onChange={handleChange} required disabled={status === 'loading'} />
-              <span>Согласие на обработку <a href="https://estatecrm.io/privacy" target="_blank" rel="noreferrer">персональных данных</a></span>
+              <span>Согласие на обработку <a href="https://estatecrm.io/confidentiality/" target="_blank" rel="noreferrer">персональных данных</a></span>
             </label>
             <label className="modal__checkbox">
               <input type="checkbox" name="marketing" checked={form.marketing} onChange={handleChange} disabled={status === 'loading'} />
-              <span>Хочу получать email с новыми кейсами, рекламой и <a href="https://estatecrm.io/privacy" target="_blank" rel="noreferrer">быть в курсе важных событий</a></span>
+              <span>Хочу получать email с новыми кейсами, рекламой и <a href="https://estatecrm.io/soglasie-na-rassylku/" target="_blank" rel="noreferrer">быть в курсе важных событий</a></span>
             </label>
             {status === 'error' && (<p className="modal__error">{errorMsg}</p>)}
             <button className="modal__submit" type="submit" disabled={status === 'loading'}>

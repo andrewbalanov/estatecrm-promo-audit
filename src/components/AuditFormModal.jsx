@@ -168,7 +168,7 @@ function AuditFormModal({ isOpen, onClose }) {
                 onChange={handleChange}
                 disabled={status === 'loading'}
               />
-              <span>Согласие на обработку <a href="#">персональных данных</a></span>
+              <span>Согласие на обработку <a href="https://estatecrm.io/confidentiality/" target="_blank" rel="noreferrer">персональных данных</a></span>
             </label>
             <label className="modal__checkbox">
               <input
@@ -178,7 +178,7 @@ function AuditFormModal({ isOpen, onClose }) {
                 onChange={handleChange}
                 disabled={status === 'loading'}
               />
-              <span>Хочу получать email с новыми кейсами, рекламой и <a href="#">быть в курсе важных событий</a></span>
+              <span>Хочу получать email с новыми кейсами, рекламой и <a href="https://estatecrm.io/soglasie-na-rassylku/" target="_blank" rel="noreferrer">быть в курсе важных событий</a></span>
             </label>
             {status === 'error' && (
               <p className="modal__error">{errorMsg}</p>

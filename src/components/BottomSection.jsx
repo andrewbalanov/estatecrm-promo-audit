@@ -157,7 +157,7 @@ function BottomSection() {
                 />
                 <span>
                   Согласие на обработку{' '}
-                  <a href="https://estatecrm.io/privacy" target="_blank" rel="noreferrer">персональных данных</a>
+                  <a href="https://estatecrm.io/confidentiality/" target="_blank" rel="noreferrer">персональных данных</a>
                 </span>
               </label>
               <label className="bottom__checkbox">
@@ -170,7 +170,7 @@ function BottomSection() {
                 />
                 <span>
                   Хочу получать email с новыми кейсами, рекламой и{' '}
-                  <a href="https://estatecrm.io/privacy" target="_blank" rel="noreferrer">быть в курсе важных событий</a>
+                  <a href="https://estatecrm.io/soglasie-na-rassylku/" target="_blank" rel="noreferrer">быть в курсе важных событий</a>
                 </span>
               </label>
 

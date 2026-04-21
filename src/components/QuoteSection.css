@@ -49,12 +49,12 @@
 
 .quote__building {
   position: absolute;
-  right: 60px;
-  bottom: -30px;
-  top: -110px;
+  right: 20px;
+  bottom: -60px;
+  top: -180px;
   width: auto;
-  height: calc(100% + 160px);
-  max-height: 760px;
+  height: calc(100% + 280px);
+  max-height: 920px;
   z-index: 3;
   filter: drop-shadow(0 40px 60px rgba(23, 23, 74, 0.28));
   object-fit: contain;
@@ -70,8 +70,9 @@
     max-width: 380px;
   }
   .quote__building {
-    max-height: 540px;
-    right: 24px;
+    max-height: 680px;
+    right: 8px;
+    top: -120px;
   }
 }
 

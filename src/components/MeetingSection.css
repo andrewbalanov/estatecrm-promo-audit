@@ -11,19 +11,19 @@
 }
 
 .meeting__point--tr {
-  top: -20px;
-  right: 80px;
-  width: 320px;
+  top: 120px;
+  right: 60px;
+  width: 440px;
   transform: rotate(-8deg);
 }
 
 .meeting__point--bl {
-  bottom: -20px;
-  left: 38%;
-  width: 240px;
+  bottom: -40px;
+  left: 36%;
+  width: 340px;
   transform: rotate(14deg);
   z-index: 3;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .meeting__container {
@@ -105,8 +105,8 @@
 
 @media (max-width: 1024px) {
   .meeting__title { font-size: 44px; }
-  .meeting__point--tr { width: 240px; right: 20px; }
-  .meeting__point--bl { width: 160px; }
+  .meeting__point--tr { width: 340px; right: 20px; top: 100px; }
+  .meeting__point--bl { width: 240px; }
 }
 
 @media (max-width: 768px) {
