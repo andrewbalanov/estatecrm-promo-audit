@@ -83,6 +83,9 @@ function BottomSection() {
           <h2 className="bottom__title">
             <em>60&nbsp;минут</em>, которые <br /> покажут, где ваш <br /> проект теряет прибыль
           </h2>
+          <p className="bottom__subtitle">
+            Запишитесь на&nbsp;экспресс-аудит и&nbsp;получите конкретные управленческие рекомендации для&nbsp;вашего проекта
+          </p>
         </div>
 
         <div className="bottom__form-wrap">

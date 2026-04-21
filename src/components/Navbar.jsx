@@ -22,9 +22,9 @@ function Navbar({ onOpenForm }) {
   }
 
   const links = [
-    { text: 'Рынок', id: 'whynow' },
-    { text: 'Аудит', id: 'audit' },
-    { text: 'Встреча', id: 'meeting' },
+    { text: 'Почему сейчас', id: 'whynow' },
+    { text: 'Что проверим', id: 'audit' },
+    { text: 'Как проходит', id: 'meeting' },
     { text: 'Записаться', id: 'book' },
   ]
 

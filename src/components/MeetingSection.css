@@ -1,7 +1,7 @@
 .meeting {
   position: relative;
-  padding: 60px 0 40px;
-  overflow: hidden;
+  padding: 60px 0 160px;
+  overflow: visible;
 }
 
 .meeting__point {
@@ -18,10 +18,11 @@
 }
 
 .meeting__point--bl {
-  bottom: -80px;
-  left: 32%;
-  width: 220px;
+  bottom: -20px;
+  left: 38%;
+  width: 240px;
   transform: rotate(14deg);
+  z-index: 3;
   opacity: 0.9;
 }
 
