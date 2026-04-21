@@ -1,5 +1,5 @@
 .whynow {
-  padding: 40px 0 60px;
+  padding: 30px 0 60px;
   position: relative;
 }
 
@@ -15,45 +15,45 @@
 .whynow__eyebrow {
   font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   color: #4356D2;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  margin-bottom: 22px;
 }
 
 .whynow__title {
-  font-size: 64px;
+  font-size: 60px;
   font-weight: 800;
   line-height: 1.05;
   color: #17174A;
   letter-spacing: -0.02em;
   margin: 0 auto;
-  max-width: 980px;
+  max-width: 1180px;
 }
 
 .whynow__grid {
-  margin-top: 60px;
+  margin-top: 64px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 20px;
 }
 
 .whynow__card {
   position: relative;
-  padding: 36px 32px 28px;
+  padding: 38px 28px 30px;
   border-radius: 28px;
-  background: linear-gradient(145deg, #4356D2 0%, #202058 100%);
+  background: linear-gradient(145deg, #4A5FDD 0%, #283086 60%, #17174A 100%);
   color: #ffffff;
   text-align: center;
   overflow: hidden;
-  box-shadow: 0 24px 48px rgba(23, 23, 74, 0.2);
+  box-shadow: 0 20px 40px rgba(23, 23, 74, 0.18);
 }
 
 .whynow__card::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(120% 80% at 100% 0%, rgba(255, 255, 255, 0.12) 0%, transparent 55%);
+  background: radial-gradient(100% 70% at 100% 0%, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -63,47 +63,51 @@
   font-weight: 700;
   font-style: italic;
   line-height: 1;
-  background: linear-gradient(180deg, #ffffff 0%, #b9c2ff 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #c9d0ff 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+  letter-spacing: -0.01em;
 }
 
 .whynow__label {
   position: relative;
-  margin-top: 4px;
+  margin-top: 2px;
   font-size: 21px;
   font-weight: 500;
+  font-style: italic;
   color: #ffffff;
   letter-spacing: -0.005em;
 }
 
 .whynow__desc {
   position: relative;
-  margin-top: 24px;
-  font-size: 16px;
-  font-weight: 300;
+  margin-top: 28px;
+  font-size: 18px;
+  font-weight: 400;
   line-height: 1.38;
-  color: rgba(255, 255, 255, 0.78);
-  max-width: 260px;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 280px;
   margin-left: auto;
   margin-right: auto;
 }
 
 @media (max-width: 1024px) {
-  .whynow__title { font-size: 48px; }
-  .whynow__value { font-size: 54px; }
+  .whynow__title { font-size: 44px; }
+  .whynow__value { font-size: 52px; }
+  .whynow__label { font-size: 19px; }
+  .whynow__desc { font-size: 16px; }
 }
 
 @media (max-width: 768px) {
-  .whynow { padding: 24px 0 40px; }
-  .whynow__title { font-size: 32px; }
+  .whynow { padding: 16px 0 40px; }
+  .whynow__title { font-size: 30px; }
   .whynow__title br { display: none; }
   .whynow__grid {
     grid-template-columns: 1fr;
-    gap: 16px;
-    margin-top: 40px;
+    gap: 14px;
+    margin-top: 36px;
   }
   .whynow__card { padding: 28px 24px 24px; }
   .whynow__value { font-size: 48px; }

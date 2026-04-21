@@ -1,8 +1,10 @@
 .quote {
-  padding: 60px 0 80px;
+  padding: 60px 0 60px;
+  overflow: visible;
 }
 
 .quote__container {
+  position: relative;
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
@@ -12,86 +14,88 @@
 
 .quote__card {
   position: relative;
-  border-radius: 40px;
-  padding: 72px 64px;
-  min-height: 480px;
-  background: linear-gradient(135deg, #f2f4ff 0%, #c8d1ff 50%, #8b97ff 100%);
+  border-radius: 24px;
+  padding: 76px 64px;
+  min-height: 440px;
+  background: linear-gradient(120deg, #ffffff 0%, #e8ecff 50%, #b9c2f3 100%);
   overflow: hidden;
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  display: flex;
   align-items: center;
-  gap: 32px;
-  box-shadow: 0 40px 80px rgba(23, 23, 74, 0.18);
-}
-
-.quote__card::before {
-  content: '';
-  position: absolute;
-  top: -30%;
-  right: -15%;
-  width: 60%;
-  height: 130%;
-  background: radial-gradient(circle, rgba(67, 86, 210, 0.45) 0%, transparent 60%);
-  filter: blur(60px);
-  pointer-events: none;
+  box-shadow: 0 24px 48px rgba(67, 86, 210, 0.12);
 }
 
 .quote__text {
   position: relative;
   z-index: 2;
   font-size: 36px;
-  font-weight: 400;
-  line-height: 1.25;
-  color: #17174A;
-  max-width: 560px;
+  font-weight: 800;
+  line-height: 1.22;
+  color: #202058;
+  max-width: 540px;
+  letter-spacing: -0.005em;
 }
 
 .quote__text strong {
-  font-weight: 700;
-  color: #17174A;
+  font-weight: 800;
+  color: #202058;
+  font-style: normal;
 }
 
 .quote__text em {
   font-style: italic;
-  font-weight: 400;
+  font-weight: 800;
   color: #4356D2;
 }
 
 .quote__building {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 560px;
-  height: auto;
-  justify-self: end;
-  filter: drop-shadow(0 40px 60px rgba(23, 23, 74, 0.3));
+  position: absolute;
+  right: 60px;
+  bottom: -30px;
+  top: -110px;
+  width: auto;
+  height: calc(100% + 160px);
+  max-height: 760px;
+  z-index: 3;
+  filter: drop-shadow(0 40px 60px rgba(23, 23, 74, 0.28));
+  object-fit: contain;
 }
 
 @media (max-width: 1024px) {
   .quote__card {
     padding: 56px 48px;
-    gap: 24px;
+    min-height: 420px;
   }
-  .quote__text { font-size: 28px; }
+  .quote__text {
+    font-size: 28px;
+    max-width: 380px;
+  }
+  .quote__building {
+    max-height: 540px;
+    right: 24px;
+  }
 }
 
 @media (max-width: 768px) {
-  .quote { padding: 40px 0 48px; }
+  .quote { padding: 30px 0 40px; }
   .quote__card {
-    padding: 40px 24px 0;
-    grid-template-columns: 1fr;
-    border-radius: 28px;
+    padding: 30px 24px 320px;
     min-height: unset;
-    text-align: center;
+    border-radius: 20px;
   }
   .quote__text {
     font-size: 22px;
-    text-align: left;
     max-width: 100%;
+    text-align: left;
   }
   .quote__building {
-    max-width: 400px;
-    margin: 0 auto;
-    justify-self: center;
+    position: absolute;
+    left: 50%;
+    right: auto;
+    bottom: -20px;
+    top: auto;
+    height: auto;
+    width: 340px;
+    max-height: none;
+    transform: translateX(-50%);
   }
 }

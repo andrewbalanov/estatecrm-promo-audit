@@ -12,7 +12,7 @@ const STEPS = [
     num: '02',
     duration: '60 мин',
     title: 'Экспресс-аудит онлайн',
-    text: 'Разбираем вашу воронку, логику CRM и связанных сервисов – ищем разрывы и точки роста в режиме живого разговора',
+    text: 'Разбираем вашу воронку, логику CRM и связанных сервисов – ищем «узкие места», где утекают деньги',
   },
   {
     num: '03',
@@ -26,14 +26,15 @@ function MeetingSection() {
   const base = import.meta.env.BASE_URL
   return (
     <section className="meeting" id="meeting">
-      <img className="meeting__point" src={`${base}images/new/point-small.png`} alt="" aria-hidden />
+      <img className="meeting__point meeting__point--tr" src={`${base}images/new/point-small.png`} alt="" aria-hidden />
+      <img className="meeting__point meeting__point--bl" src={`${base}images/new/point-meeting.png`} alt="" aria-hidden />
       <div className="meeting__container">
         <h2 className="meeting__title">
           Как будет <br /> проходить встреча
         </h2>
         <div className="meeting__grid">
           {STEPS.map((s, i) => (
-            <article key={i} className={`meeting__card meeting__card--${i + 1}`}>
+            <article key={i} className="meeting__card">
               <header className="meeting__card-head">
                 <span className="meeting__num">{s.num}</span>
                 <span className="meeting__duration">{s.duration}</span>

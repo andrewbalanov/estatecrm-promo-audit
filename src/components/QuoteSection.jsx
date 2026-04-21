@@ -8,16 +8,16 @@ function QuoteSection() {
       <div className="quote__container">
         <div className="quote__card">
           <p className="quote__text">
-            Мы проанализировали процессы <strong>150+ застройщиков</strong>{' '}
-            <em>и хотим передать вам лучшие практики рынка</em>{' '}
-            для увеличения маржи с проектов
+            <strong>Мы проанализировали процессы 150+ застройщиков и </strong>
+            <em>хотим  передать вам лучшие практики рынка</em>
+            <strong> для увеличения маржи  с проектов</strong>
           </p>
-          <img
-            className="quote__building"
-            src={`${base}images/new/building.png`}
-            alt="Проданные квартиры застройщика"
-          />
         </div>
+        <img
+          className="quote__building"
+          src={`${base}images/new/building.png`}
+          alt="Проданные квартиры застройщика"
+        />
       </div>
     </section>
   )

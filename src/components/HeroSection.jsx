@@ -7,15 +7,17 @@ function HeroSection({ onOpenForm }) {
   return (
     <section className="hero">
       <img className="hero__gear-corner" src={`${base}images/new/gear-corner.png`} alt="" aria-hidden />
+      <img className="hero__gear" src={`${base}images/new/hero-gear.png`} alt="" aria-hidden />
+
       <div className="hero__container">
         <div className="hero__content">
           <span className="hero__badge">Бесплатный аудит для застройщиков</span>
           <h1 className="hero__title">
-            Срок сделки вырос в 2 раза.{' '}
+            Срок сделки вырос в&nbsp;2&nbsp;раза.{' '}
             <span className="hero__title-accent">Ваша CRM к&nbsp;этому готова?</span>
           </h1>
           <p className="hero__subtitle">
-            Покажем, из-за каких процессов между маркетингом, продажами и финансами вы&nbsp;теряете прибыль
+            Покажем, из-за каких процессов между маркетингом, продажами и&nbsp;финансами вы&nbsp;теряете прибыль
           </p>
           <div className="hero__actions">
             <button className="hero__btn hero__btn--primary" type="button" onClick={onOpenForm}>
@@ -28,14 +30,14 @@ function HeroSection({ onOpenForm }) {
               rel="noreferrer"
             >
               Скачать презентацию
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
                 <path d="M12 4v12m0 0l-5-5m5 5l5-5M4 20h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </a>
           </div>
         </div>
+
         <div className="hero__visual">
-          <img className="hero__gear" src={`${base}images/new/hero-gear.png`} alt="" aria-hidden />
           <img className="hero__dashboard" src={`${base}images/new/hero-dashboard.png`} alt="EstateCRM — Аналитика продаж" />
         </div>
       </div>

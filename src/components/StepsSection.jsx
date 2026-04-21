@@ -4,16 +4,19 @@ import './StepsSection.css'
 const CARDS = [
   {
     icon: 'icon-bubble.png',
+    iconMod: '',
     title: 'Диагностика модели продаж',
     text: 'Найдем разрывы в данных между системами и покажем, где именно вы теряете прибыль',
   },
   {
     icon: 'icon-trophy.png',
+    iconMod: 'trophy',
     title: 'Бенчмарк с лучшими практиками',
     text: 'Сравним ваш кейс с практиками 150+ застройщиков, с которыми мы работаем 10+ лет',
   },
   {
     icon: 'icon-switch.png',
+    iconMod: 'switch',
     title: 'План действий',
     text: '5-10 конкретных шагов с расчетом ROI: от быстрых побед до системных изменений',
   },
@@ -30,7 +33,12 @@ function StepsSection() {
         <div className="audit__grid">
           {CARDS.map((c, i) => (
             <article key={i} className="audit__card">
-              <img className="audit__icon" src={`${base}images/new/${c.icon}`} alt="" aria-hidden />
+              <img
+                className={`audit__icon ${c.iconMod ? 'audit__icon--' + c.iconMod : ''}`}
+                src={`${base}images/new/${c.icon}`}
+                alt=""
+                aria-hidden
+              />
               <h3 className="audit__card-title">{c.title}</h3>
               <p className="audit__card-text">{c.text}</p>
             </article>
