@@ -10,7 +10,9 @@ function Footer() {
       <div className="footer__container">
         <div className="footer__top">
           <div className="footer__brand">
-            <img className="footer__logo" src={`${base}images/new/logo.png`} alt="EstateCRM" />
+            <a href="https://estatecrm.io" target="_blank" rel="noreferrer" aria-label="EstateCRM">
+              <img className="footer__logo" src={`${base}images/new/logo.png`} alt="EstateCRM" />
+            </a>
             <p className="footer__tagline">
               Единая цифровая экосистема для&nbsp;недвижимости. Комплексная CRM-система
               для&nbsp;автоматизации процессов застройщиков, агентств недвижимости
@@ -20,17 +22,22 @@ function Footer() {
 
           <div className="footer__cols">
             <div className="footer__col">
-              <h4 className="footer__title">Продукт</h4>
-              <a className="footer__link" href="https://estatecrm.io" target="_blank" rel="noreferrer">EstateCRM</a>
-              <a className="footer__link" href="https://estatecrm.io/#features" target="_blank" rel="noreferrer">Функционал</a>
-              <a className="footer__link" href="https://estatecrm.io/#integrations" target="_blank" rel="noreferrer">Интеграции</a>
+              <h4 className="footer__title">Продукты</h4>
+              <a className="footer__link" href="https://estatecrm.io/developers" target="_blank" rel="noreferrer">CRM застройщика</a>
+              <a className="footer__link" href="https://estatecrm.io/agency" target="_blank" rel="noreferrer">CRM агентства</a>
+              <a className="footer__link" href="https://estatecrm.io/marketing" target="_blank" rel="noreferrer">Маркетинг</a>
+              <a className="footer__link" href="https://estatecrm.io/commerce" target="_blank" rel="noreferrer">Коммерческая недвижимость</a>
+              <a className="footer__link" href="https://estatecrm.io/property" target="_blank" rel="noreferrer">Управляющая компания</a>
+              <a className="footer__link" href="https://estatecrm.io/integrations" target="_blank" rel="noreferrer">Интеграции</a>
             </div>
 
             <div className="footer__col">
               <h4 className="footer__title">Компания</h4>
-              <a className="footer__link" href="https://estatecrm.io/#cases" target="_blank" rel="noreferrer">Кейсы</a>
+              <a className="footer__link" href="https://estatecrm.io/company" target="_blank" rel="noreferrer">О&nbsp;компании</a>
+              <a className="footer__link" href="https://estatecrm.io/cases" target="_blank" rel="noreferrer">Кейсы</a>
               <a className="footer__link" href="https://estatecrm.io/blog" target="_blank" rel="noreferrer">Блог</a>
-              <a className="footer__link" href="https://estatecrm.io/contacts" target="_blank" rel="noreferrer">Контакты</a>
+              <a className="footer__link" href="https://estatecrm.io/partners" target="_blank" rel="noreferrer">Партнёрская программа</a>
+              <a className="footer__link" href="https://estatecrm.io/all-comparison" target="_blank" rel="noreferrer">Сравнение систем</a>
             </div>
 
             <div className="footer__col">
@@ -51,7 +58,8 @@ function Footer() {
           </p>
           <div className="footer__legal-links">
             <a className="footer__link footer__link--small" href="https://estatecrm.io/confidentiality/" target="_blank" rel="noreferrer">Политика конфиденциальности</a>
-            <a className="footer__link footer__link--small" href="https://estatecrm.io/terms" target="_blank" rel="noreferrer">Пользовательское соглашение</a>
+            <a className="footer__link footer__link--small" href="https://estatecrm.io/soglasie-na-rassylku/" target="_blank" rel="noreferrer">Согласие на&nbsp;рассылку</a>
+            <a className="footer__link footer__link--small" href="https://estatecrm.io/map" target="_blank" rel="noreferrer">Карта сайта</a>
           </div>
         </div>
       </div>
