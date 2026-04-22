@@ -72,6 +72,9 @@ function PresentationFormModal({ isOpen, onClose }) {
       const data = await bitrixResponse.json()
 
       if (data.result) {
+        if (typeof window !== 'undefined' && typeof window.ym === 'function') {
+          window.ym(108680226, 'reachGoal', 'spas_str')
+        }
         setStatus('success')
         setTimeout(triggerDownload, 600)
       } else {

@@ -60,6 +60,9 @@ function BottomSection() {
       const [bitrixResponse] = await Promise.all([bitrixPromise, emailPromise])
       const data = await bitrixResponse.json()
       if (data.result) {
+        if (typeof window !== 'undefined' && typeof window.ym === 'function') {
+          window.ym(108680226, 'reachGoal', 'spas_str')
+        }
         setStatus('success')
         setForm({ name: '', phone: '', company: '', email: '', consent: true, marketing: true })
       } else {

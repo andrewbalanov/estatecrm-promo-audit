@@ -63,6 +63,9 @@ function AuditFormModal({ isOpen, onClose }) {
       const data = await bitrixResponse.json()
 
       if (data.result) {
+        if (typeof window !== 'undefined' && typeof window.ym === 'function') {
+          window.ym(108680226, 'reachGoal', 'spas_str')
+        }
         setStatus('success')
       } else {
         console.error('Bitrix24 error:', data)
