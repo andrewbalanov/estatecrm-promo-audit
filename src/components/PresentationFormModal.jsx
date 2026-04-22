@@ -104,7 +104,7 @@ function PresentationFormModal({ isOpen, onClose }) {
           <button className="modal__close" onClick={handleClose} type="button">&times;</button>
           <h2 className="modal__title">Скачать презентацию</h2>
           <p className="modal__subtitle">
-            Заполните форму&nbsp;— и&nbsp;презентация «Антикризисный Аудит&nbsp;2026» сразу начнёт скачиваться в&nbsp;ваш браузер
+            Заполните форму&nbsp;— и&nbsp;презентация автоматически скачается на&nbsp;ваше устройство
           </p>
         </div>
         {status === 'success' ? (
@@ -112,7 +112,7 @@ function PresentationFormModal({ isOpen, onClose }) {
             <div className="modal__success">
               <div className="modal__success-icon">&#10003;</div>
               <h3>Спасибо! Презентация скачивается</h3>
-              <p>Файл загружается в&nbsp;папку «Загрузки» вашего браузера. Если скачивание не&nbsp;началось автоматически&nbsp;— нажмите кнопку ниже.</p>
+              <p>Если загрузка не&nbsp;началась автоматически&nbsp;— нажмите кнопку ниже.</p>
               <button className="modal__submit" type="button" onClick={triggerDownload}>
                 Скачать презентацию
               </button>
