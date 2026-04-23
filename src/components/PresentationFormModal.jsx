@@ -75,6 +75,9 @@ function PresentationFormModal({ isOpen, onClose }) {
         if (typeof window !== 'undefined' && typeof window.ym === 'function') {
           window.ym(108680226, 'reachGoal', 'spas_str')
         }
+        if (typeof window !== 'undefined' && Array.isArray(window._tmr)) {
+          window._tmr.push({ type: 'reachGoal', id: 3706885, goal: 'form_subm_audit' })
+        }
         setStatus('success')
         setTimeout(triggerDownload, 600)
       } else {
