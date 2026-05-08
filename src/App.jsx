@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 import WhyNowSection from './components/WhyNowSection'
 import QuoteSection from './components/QuoteSection'
+import TestimonialSection from './components/TestimonialSection'
 import StepsSection from './components/StepsSection'
 import MeetingSection from './components/MeetingSection'
 import BottomSection from './components/BottomSection'
@@ -23,6 +24,7 @@ function App() {
       <HeroSection onOpenForm={openAudit} onOpenPresentation={openPresentation} />
       <WhyNowSection />
       <QuoteSection />
+      <TestimonialSection onOpenPresentation={openPresentation} />
       <StepsSection />
       <MeetingSection />
       <BottomSection />

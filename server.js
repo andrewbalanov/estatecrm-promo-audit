@@ -75,7 +75,7 @@ function buildEmailHtml({ name, company, email, phone, consent, marketing, url, 
 
 const FORM_LABELS = {
   audit: 'Форма "Аудит CRM"',
-  presentation: 'Форма "Скачать презентацию"',
+  presentation: 'Форма "Скачать кейсы"',
   bottom: 'Форма в нижнем блоке',
 }
 

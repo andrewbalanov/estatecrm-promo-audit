@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './AuditFormModal.css'
 
 const BITRIX_WEBHOOK = 'https://tracebs.bitrix24.ru/rest/2/7det75s26t8s9sz6/'
-const PDF_URL = `${import.meta.env.BASE_URL}files/estatecrm-audit-2026.pdf`
+const PDF_URL = `${import.meta.env.BASE_URL}files/3-keysa-po-auditu-developerov.pdf`
 
 function PresentationFormModal({ isOpen, onClose }) {
   const [form, setForm] = useState({
@@ -26,7 +26,7 @@ function PresentationFormModal({ isOpen, onClose }) {
   const triggerDownload = () => {
     const link = document.createElement('a')
     link.href = PDF_URL
-    link.download = 'EstateCRM-Audit-2026.pdf'
+    link.download = '3 кейса по аудиту девелоперов.pdf'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
@@ -41,15 +41,15 @@ function PresentationFormModal({ isOpen, onClose }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           fields: {
-            TITLE: `Скачивание презентации — ${form.company || form.name}`,
+            TITLE: `Скачивание кейсов — ${form.company || form.name}`,
             NAME: form.name,
             COMPANY_TITLE: form.company,
             EMAIL: [{ VALUE: form.email, VALUE_TYPE: 'WORK' }],
             PHONE: [{ VALUE: form.phone, VALUE_TYPE: 'WORK' }],
             SOURCE_ID: 'UC_RP7YY3',
             UF_CRM_1760704782049: 'https://promo.estatecrm.io/audit/',
-            UF_CRM_1738824489: 'Скачать презентацию',
-            COMMENTS: `Источник: Лендинг «Аудит CRM» — форма скачивания презентации\nМаркетинговая рассылка: ${form.marketing ? 'Да' : 'Нет'}`,
+            UF_CRM_1738824489: 'Скачать кейсы',
+            COMMENTS: `Источник: Лендинг «Аудит CRM» — форма скачивания кейсов\nМаркетинговая рассылка: ${form.marketing ? 'Да' : 'Нет'}`,
           },
         }),
       })
@@ -108,19 +108,19 @@ function PresentationFormModal({ isOpen, onClose }) {
       <div className="modal">
         <div className="modal__header">
           <button className="modal__close" onClick={handleClose} type="button">&times;</button>
-          <h2 className="modal__title">Скачать презентацию</h2>
+          <h2 className="modal__title">Скачать кейсы</h2>
           <p className="modal__subtitle">
-            Заполните форму&nbsp;— и&nbsp;презентация автоматически скачается на&nbsp;ваше устройство
+            Заполните форму&nbsp;— и&nbsp;кейсы автоматически скачаются на&nbsp;ваше устройство
           </p>
         </div>
         {status === 'success' ? (
           <div className="modal__body">
             <div className="modal__success">
               <div className="modal__success-icon">&#10003;</div>
-              <h3>Спасибо! Презентация скачивается</h3>
+              <h3>Спасибо! Кейсы скачиваются</h3>
               <p>Если загрузка не&nbsp;началась автоматически&nbsp;— нажмите кнопку ниже.</p>
               <button className="modal__submit" type="button" onClick={triggerDownload}>
-                Скачать презентацию
+                Скачать кейсы
               </button>
               <button
                 className="modal__submit modal__submit--ghost"
@@ -160,7 +160,7 @@ function PresentationFormModal({ isOpen, onClose }) {
             </label>
             {status === 'error' && (<p className="modal__error">{errorMsg}</p>)}
             <button className="modal__submit" type="submit" disabled={status === 'loading'}>
-              {status === 'loading' ? 'Отправка...' : 'Получить презентацию'}
+              {status === 'loading' ? 'Отправка...' : 'Получить кейсы'}
             </button>
           </form>
         )}
