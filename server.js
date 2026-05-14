@@ -11,6 +11,10 @@ const PORT = process.env.PORT || 3000
 
 app.use(express.json())
 
+// Vite собран с base: '/audit/' — без trailing slash ассеты ломаются.
+// Явно редиректим /audit → /audit/ до static и SPA fallback.
+app.get('/audit', (_req, res) => res.redirect(301, '/audit/'))
+
 // Serve static files from Vite build (both paths for Coolify compatibility)
 app.use('/audit', express.static(join(__dirname, 'dist')))
 app.use('/', express.static(join(__dirname, 'dist')))
@@ -106,10 +110,15 @@ const sendEmailHandler = async (req, res) => {
 app.post('/api/send-email', sendEmailHandler)
 app.post('/audit/api/send-email', sendEmailHandler)
 
-// Healthcheck — проверяет сервер + SMTP подключение (защищён ключом)
+// Healthcheck
+// - без ?key= → быстрый liveness 200 (для Coolify / Docker healthcheck)
+// - с ?key=HEALTH_KEY → полная проверка, включая SMTP (для внешнего uptime-монитора)
 const HEALTH_KEY = process.env.HEALTH_KEY || 'estatecrm-mon-2026'
 
 const healthHandler = async (req, res) => {
+  if (!req.query.key) {
+    return res.status(200).json({ server: 'ok', timestamp: new Date().toISOString() })
+  }
   if (req.query.key !== HEALTH_KEY) {
     return res.status(401).json({ error: 'Unauthorized' })
   }
@@ -126,10 +135,10 @@ app.get('/api/health', healthHandler)
 app.get('/audit/api/health', healthHandler)
 
 // SPA fallback
-app.get('/audit/*', (req, res) => {
+app.get('/audit/*', (_req, res) => {
   res.sendFile(join(__dirname, 'dist', 'index.html'))
 })
-app.get('*', (req, res) => {
+app.get('*', (_req, res) => {
   res.sendFile(join(__dirname, 'dist', 'index.html'))
 })
 
